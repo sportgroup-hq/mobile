@@ -1,11 +1,11 @@
-import { IUser } from "./users";
+import { User } from "./users";
 
-export interface IGroup {
+export interface Group {
   id: string;
   name: string;
   sport?: string;
   code: string;
-  owner: IUser;
+  owner: User;
   createdAt: string;
   editedAt: string;
 }

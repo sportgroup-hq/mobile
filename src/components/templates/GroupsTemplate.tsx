@@ -1,16 +1,17 @@
 import { useRouter } from "expo-router";
 import { View, StyleSheet, ScrollView } from "react-native";
-import { FAB } from "react-native-paper";
+import { FAB, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import useBottomSheetModal from "../../hooks/useBottomSheetModal";
 import { Group } from "../../types/groups";
 import BottomSheetModalSelect from "../molecules/BottomSheetModalSelect";
-import GroupItem from "../molecules/GroupItem";
+import GroupList from "../organisms/GroupList";
 
 interface GroupsTemplateProps {
-  groupsData: Group[];
-  isGetGroupsLoading: boolean;
+  createdGroups: Group[];
+  joinedGroups: Group[];
+  isLoading: boolean;
 }
 
 const ACTION_OPTIONS = [
@@ -19,7 +20,7 @@ const ACTION_OPTIONS = [
 ];
 
 export default function GroupsTemplate(props: GroupsTemplateProps) {
-  const { groupsData, isGetGroupsLoading } = props;
+  const { isLoading, createdGroups, joinedGroups } = props;
 
   const router = useRouter();
 
@@ -28,15 +29,26 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
     present: bottomSheetModalSelectPresent,
   } = useBottomSheetModal();
 
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <>
       <SafeAreaView style={styles.root}>
         <View style={styles.inner}>
           <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.main}>
-              {groupsData.map((group) => (
-                <GroupItem key={group.id} group={group} />
-              ))}
+              <View style={styles.section}>
+                <Text variant="headlineSmall">Групи, якими ви керуєте</Text>
+                <GroupList groups={createdGroups} />
+              </View>
+              <View style={styles.section}>
+                <Text variant="headlineSmall">
+                  Групи, до яких ви приєдналися
+                </Text>
+                <GroupList groups={joinedGroups} />
+              </View>
             </View>
           </ScrollView>
           <FAB
@@ -70,9 +82,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   main: {
-    flex: 1,
-    gap: 8,
     padding: 8,
+    gap: 64,
+  },
+  section: {
+    gap: 12,
   },
   fab: {
     position: "absolute",

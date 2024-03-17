@@ -4,7 +4,7 @@ export interface Group {
   id: string;
   name: string;
   sport?: string;
-  code: string;
+  code?: string;
   owner: User;
   createdAt: string;
   editedAt: string;

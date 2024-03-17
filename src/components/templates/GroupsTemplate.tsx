@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { View, StyleSheet, ScrollView } from "react-native";
-import { FAB, Text } from "react-native-paper";
+import { ActivityIndicator, Button, FAB, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import useBottomSheetModal from "../../hooks/useBottomSheetModal";
@@ -29,27 +29,12 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
     present: bottomSheetModalSelectPresent,
   } = useBottomSheetModal();
 
-  if (isLoading) {
-    return null;
-  }
-
   return (
     <>
       <SafeAreaView style={styles.root}>
         <View style={styles.inner}>
           <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.main}>
-              <View style={styles.section}>
-                <Text variant="headlineSmall">Групи, якими ви керуєте</Text>
-                <GroupList groups={createdGroups} />
-              </View>
-              <View style={styles.section}>
-                <Text variant="headlineSmall">
-                  Групи, до яких ви приєдналися
-                </Text>
-                <GroupList groups={joinedGroups} />
-              </View>
-            </View>
+            {renderContent()}
           </ScrollView>
           <FAB
             icon="plus"
@@ -65,6 +50,46 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
       />
     </>
   );
+
+  function renderContent() {
+    const hasCreatedGroups = !!createdGroups.length;
+    const hasJoinedGroups = !!joinedGroups.length;
+
+    return (
+      <View style={styles.main}>
+        <View style={styles.section}>
+          <Text variant="headlineSmall">Групи, якими ви керуєте</Text>
+          {isLoading ? (
+            <ActivityIndicator />
+          ) : !hasCreatedGroups ? (
+            <View style={styles.empty}>
+              <Text variant="bodySmall">Ви ще не створили жодної групи</Text>
+              <Button onPress={() => {}}>Створити групу</Button>
+            </View>
+          ) : (
+            <GroupList groups={createdGroups} />
+          )}
+        </View>
+        {hasJoinedGroups && (
+          <View style={styles.section}>
+            <Text variant="headlineSmall">Групи, до яких ви приєдналися</Text>
+            {isLoading ? (
+              <ActivityIndicator />
+            ) : !hasJoinedGroups ? (
+              <View style={styles.empty}>
+                <Text variant="bodySmall">
+                  Ви ще не приєдналися до жодної групи
+                </Text>
+                <Button onPress={() => {}}>Приєднатися до групи</Button>
+              </View>
+            ) : (
+              <GroupList groups={joinedGroups} />
+            )}
+          </View>
+        )}
+      </View>
+    );
+  }
 
   function handleActionChange(value: string) {
     router.navigate(value);
@@ -84,6 +109,10 @@ const styles = StyleSheet.create({
   main: {
     padding: 8,
     gap: 64,
+  },
+  empty: {
+    alignItems: "center",
+    gap: 4,
   },
   section: {
     gap: 12,

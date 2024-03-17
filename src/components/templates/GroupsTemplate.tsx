@@ -70,23 +70,21 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
             <GroupList groups={createdGroups} />
           )}
         </View>
-        {hasJoinedGroups && (
-          <View style={styles.section}>
-            <Text variant="headlineSmall">Групи, до яких ви приєдналися</Text>
-            {isLoading ? (
-              <ActivityIndicator />
-            ) : !hasJoinedGroups ? (
-              <View style={styles.empty}>
-                <Text variant="bodySmall">
-                  Ви ще не приєдналися до жодної групи
-                </Text>
-                <Button onPress={() => {}}>Приєднатися до групи</Button>
-              </View>
-            ) : (
-              <GroupList groups={joinedGroups} />
-            )}
-          </View>
-        )}
+        <View style={styles.section}>
+          <Text variant="headlineSmall">Групи, до яких ви приєдналися</Text>
+          {isLoading ? (
+            <ActivityIndicator />
+          ) : !hasJoinedGroups ? (
+            <View style={styles.empty}>
+              <Text variant="bodySmall">
+                Ви ще не приєдналися до жодної групи
+              </Text>
+              <Button onPress={() => {}}>Приєднатися до групи</Button>
+            </View>
+          ) : (
+            <GroupList groups={joinedGroups} />
+          )}
+        </View>
       </View>
     );
   }

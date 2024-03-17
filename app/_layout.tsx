@@ -3,6 +3,7 @@ import { Slot } from "expo-router";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PaperProvider } from "react-native-paper";
+import Toast from "react-native-toast-message";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
@@ -14,6 +15,7 @@ export default function RootLayout() {
         <GestureHandlerRootView style={styles.gestureHandlerRootView}>
           <BottomSheetModalProvider>
             <Slot />
+            <Toast />
           </BottomSheetModalProvider>
         </GestureHandlerRootView>
       </PaperProvider>

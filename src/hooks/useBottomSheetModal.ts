@@ -8,5 +8,9 @@ export default function useBottomSheetModal() {
     ref.current?.present();
   }
 
-  return { ref, present };
+  function dismiss() {
+    ref.current?.dismiss();
+  }
+
+  return { ref, present, dismiss };
 }

@@ -4,13 +4,13 @@ import { useRef } from "react";
 export default function useBottomSheetModal() {
   const ref = useRef<BottomSheetModal>(null);
 
-  function present() {
+  function handlePresent() {
     ref.current?.present();
   }
 
-  function dismiss() {
+  function handleDismiss() {
     ref.current?.dismiss();
   }
 
-  return { ref, present, dismiss };
+  return { ref, handlePresent, handleDismiss };
 }

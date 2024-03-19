@@ -6,19 +6,18 @@ import { GROUPS_KEY, GROUPS_URL, GROUP_URL } from "../constants/groups";
 import { generatePath } from "../helpers/misc";
 import { Group } from "../types/groups";
 
-async function getGroups() {
+async function getGroups(): Promise<Group[]> {
   const res = await mockedApiClient.get(GROUPS_URL);
   return res.data;
 }
 
 async function deleteGroup(id: string) {
-  console.log(generatePath(GROUP_URL, { id }));
   const res = await mockedApiClient.delete(generatePath(GROUP_URL, { id }));
   return res.data;
 }
 
 export function useGetGroups() {
-  return useQuery<Group[]>({
+  return useQuery({
     queryKey: [GROUPS_KEY],
     queryFn: getGroups,
   });

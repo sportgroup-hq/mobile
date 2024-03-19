@@ -1,5 +1,4 @@
 import { useRouter } from "expo-router";
-import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { TouchableRipple, Surface, Text, IconButton } from "react-native-paper";
 
@@ -9,6 +8,7 @@ import { useDeleteGroup, useLeaveGroup } from "../../api/groups";
 import { useGetMe } from "../../api/users";
 import { getFullName } from "../../helpers/users";
 import useBottomSheetModal from "../../hooks/useBottomSheetModal";
+import useDialog from "../../hooks/useDialog";
 import { Group } from "../../types/groups";
 
 const OWNER_ACTION_OPTIONS = [
@@ -32,15 +32,22 @@ export default function GroupItem(props: GroupCardProps) {
   const { mutate: leaveGroupMutate, isLoading: isLeaveGroupLoading } =
     useLeaveGroup();
 
-  const [isOpenDeleteGroupСD, setIsOpenDeleteGroupCD] = useState(false);
-  const [isOpenLeaveGroupСD, setIsOpenLeaveGroupCD] = useState(false);
-
   const { data: meData } = useGetMe();
 
   const {
+    isOpen: isDeleteGroupCDOpen,
+    handleOpen: handleDeleteGroupCDOpen,
+    handleClose: handleDeleteGroupCDClose,
+  } = useDialog();
+  const {
+    isOpen: isLeaveGroupСDOpen,
+    handleOpen: handleLeaveGroupCDOpen,
+    handleClose: handleLeaveGroupCDClose,
+  } = useDialog();
+  const {
     ref: BSMSelectRef,
-    present: handleBSMSelectPresent,
-    dismiss: handleBSMSelectDismiss,
+    handlePresent: handleBSMSelectPresent,
+    handleDismiss: handleBSMSelectDismiss,
   } = useBottomSheetModal();
 
   const isOwner = meData?.id === group.owner.id;
@@ -76,7 +83,7 @@ export default function GroupItem(props: GroupCardProps) {
         title="Видалити"
         description="Ви впевнені, що хочете видалити цю групу? Ця дія незворотня і призведе до видалення всієї інформації та учасників, пов'язаних з нею."
         confirmButtonLabel="Видалити групу"
-        isOpen={isOpenDeleteGroupСD}
+        isOpen={isDeleteGroupCDOpen}
         isConfirmButtonLoading={isDeleteGroupLoading}
         isConfirmButtonDisabled={isDeleteGroupLoading}
         onClose={handleDeleteGroupCDClose}
@@ -88,32 +95,16 @@ export default function GroupItem(props: GroupCardProps) {
         confirmButtonLabel="Покинути групу"
         isConfirmButtonLoading={isLeaveGroupLoading}
         isConfirmButtonDisabled={isLeaveGroupLoading}
-        isOpen={isOpenLeaveGroupСD}
+        isOpen={isLeaveGroupСDOpen}
         onClose={handleLeaveGroupCDClose}
         onConfirm={handleLeaveGroup}
       />
     </>
   );
 
-  function handleDeleteGroupCDOpen() {
-    setIsOpenDeleteGroupCD(true);
-  }
-
-  function handleDeleteGroupCDClose() {
-    setIsOpenDeleteGroupCD(false);
-  }
-
   async function handleDeleteGroup() {
     await deleteGroupMutate(group.id);
     handleDeleteGroupCDClose();
-  }
-
-  function handleLeaveGroupCDOpen() {
-    setIsOpenLeaveGroupCD(true);
-  }
-
-  function handleLeaveGroupCDClose() {
-    setIsOpenLeaveGroupCD(false);
   }
 
   async function handleLeaveGroup() {

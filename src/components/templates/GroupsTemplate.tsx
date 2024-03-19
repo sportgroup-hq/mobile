@@ -26,7 +26,7 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
 
   const {
     ref: bottomSheetModalSelectRef,
-    present: bottomSheetModalSelectPresent,
+    handlePresent: bottomSheetModalSelectPresent,
   } = useBottomSheetModal();
 
   return (

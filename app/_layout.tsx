@@ -1,5 +1,5 @@
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PaperProvider } from "react-native-paper";
@@ -8,13 +8,26 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
 
+function RootStack() {
+  return (
+    <Stack>
+      <Stack.Screen
+        name="groups"
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack>
+  );
+}
+
 export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <PaperProvider>
         <GestureHandlerRootView style={styles.gestureHandlerRootView}>
           <BottomSheetModalProvider>
-            <Slot />
+            <RootStack />
             <Toast />
           </BottomSheetModalProvider>
         </GestureHandlerRootView>

@@ -1,8 +1,8 @@
 import { useRouter } from "expo-router";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { ActivityIndicator, Button, FAB, Text } from "react-native-paper";
-import { SafeAreaView } from "react-native-safe-area-context";
 
+import { ROUTES } from "../../constants/routes";
 import useBottomSheetModal from "../../hooks/useBottomSheetModal";
 import { Group } from "../../types/groups";
 import BottomSheetModalSelect from "../molecules/BottomSheetModalSelect";
@@ -15,8 +15,8 @@ interface GroupsTemplateProps {
 }
 
 const ACTION_OPTIONS = [
-  { label: "Приєднатися до групи", value: "/groups/join" },
-  { label: "Створити групу", value: "/groups/create" },
+  { label: "Приєднатися до групи", value: ROUTES.GROUPS.JOIN },
+  { label: "Створити групу", value: ROUTES.GROUPS.CREATE },
 ];
 
 export default function GroupsTemplate(props: GroupsTemplateProps) {
@@ -25,26 +25,21 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
   const router = useRouter();
 
   const {
-    ref: bottomSheetModalSelectRef,
-    handlePresent: bottomSheetModalSelectPresent,
+    ref: BSMSelectRef,
+    handlePresent: handleBSMSelectPresent,
+    handleDismiss: handleBSMSelectDismiss,
   } = useBottomSheetModal();
 
   return (
     <>
-      <SafeAreaView style={styles.root}>
-        <View style={styles.inner}>
-          <ScrollView contentContainerStyle={styles.container}>
-            {renderContent()}
-          </ScrollView>
-          <FAB
-            icon="plus"
-            style={styles.fab}
-            onPress={bottomSheetModalSelectPresent}
-          />
-        </View>
-      </SafeAreaView>
+      <View style={styles.root}>
+        <ScrollView contentContainerStyle={styles.inner}>
+          {renderContent()}
+        </ScrollView>
+        <FAB icon="plus" style={styles.fab} onPress={handleBSMSelectPresent} />
+      </View>
       <BottomSheetModalSelect
-        ref={bottomSheetModalSelectRef}
+        ref={BSMSelectRef}
         options={ACTION_OPTIONS}
         onChange={handleActionChange}
       />
@@ -64,7 +59,7 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
           ) : !hasCreatedGroups ? (
             <View style={styles.empty}>
               <Text variant="bodySmall">Ви ще не створили жодної групи</Text>
-              <Button onPress={() => {}}>Створити групу</Button>
+              <Button onPress={handleCreateGroupPress}>Створити групу</Button>
             </View>
           ) : (
             <GroupList groups={createdGroups} />
@@ -90,7 +85,12 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
   }
 
   function handleActionChange(value: string) {
+    handleBSMSelectDismiss();
     router.navigate(value);
+  }
+
+  function handleCreateGroupPress() {
+    router.navigate(ROUTES.GROUPS.CREATE);
   }
 }
 
@@ -101,11 +101,9 @@ const styles = StyleSheet.create({
   inner: {
     flex: 1,
   },
-  container: {
-    flex: 1,
-  },
   main: {
-    padding: 8,
+    paddingVertical: 16,
+    paddingHorizontal: 8,
     gap: 64,
   },
   empty: {
@@ -118,6 +116,6 @@ const styles = StyleSheet.create({
   fab: {
     position: "absolute",
     right: 16,
-    bottom: 0,
+    bottom: 48,
   },
 });

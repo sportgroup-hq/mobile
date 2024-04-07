@@ -5,7 +5,7 @@ import { Button } from "react-native-paper";
 import { useEditGroup } from "../../api/groups";
 import { EditGroupSchema } from "../../helpers/validation";
 import { Group } from "../../types/groups";
-import TextField from "../atoms/TextField";
+import TextField from "../molecules/TextField";
 
 interface FormValues {
   name: string;

@@ -6,7 +6,7 @@ import { Text, Button } from "react-native-paper";
 import { useJoinGroup } from "../../api/groups";
 import { ROUTES } from "../../constants/routes";
 import { JoinGroupSchema } from "../../helpers/validation";
-import TextField from "../atoms/TextField";
+import TextField from "../molecules/TextField";
 
 interface FormValues {
   code: string;

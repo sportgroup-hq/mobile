@@ -1,6 +1,6 @@
 export enum Sex {
-  Male,
-  Female,
+  Male = "MALE",
+  Female = "FEMALE",
 }
 
 export interface User {

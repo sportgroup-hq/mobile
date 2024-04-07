@@ -6,15 +6,43 @@ import { PaperProvider } from "react-native-paper";
 import Toast from "react-native-toast-message";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import UserAvatar from "../src/components/molecules/UserAvatar";
+
 const queryClient = new QueryClient();
 
 function RootStack() {
   return (
     <Stack>
       <Stack.Screen
-        name="groups"
+        name="groups/index"
         options={{
-          headerShown: false,
+          headerTitle: "",
+          headerRight: UserAvatar,
+        }}
+      />
+      <Stack.Screen
+        name="groups/create"
+        options={{
+          headerTitle: "Створити групу",
+        }}
+      />
+      <Stack.Screen
+        name="groups/join"
+        options={{
+          headerTitle: "Приєднатися до групи",
+        }}
+      />
+      <Stack.Screen
+        name="groups/edit/[id]"
+        options={{
+          headerTitle: "Редагувати групу",
+        }}
+      />
+
+      <Stack.Screen
+        name="profile/me"
+        options={{
+          headerTitle: "Редагувати профіль",
         }}
       />
     </Stack>

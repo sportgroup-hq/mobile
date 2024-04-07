@@ -4,6 +4,7 @@ import { Button } from "react-native-paper";
 
 import { EditUserSchema } from "../../helpers/validation";
 import { Sex, User } from "../../types/users";
+import DateField from "../molecules/DateField";
 import SelectField from "../molecules/SelectField";
 import TextField from "../molecules/TextField";
 
@@ -14,7 +15,7 @@ const SEX_OPTIONS = [
 
 interface FormValues {
   phone: string;
-  dateOfBirth: Date | null;
+  dateOfBirth: string;
   sex: string;
   address: string;
 }
@@ -29,7 +30,7 @@ export default function EditUserForm(props: EditUserFormProps) {
   const formik = useFormik({
     initialValues: {
       phone: user.phone || "",
-      dateOfBirth: user.dateOfBirth || null,
+      dateOfBirth: user.dateOfBirth || "",
       sex: user.sex || "",
       address: user.address || "",
     },
@@ -46,13 +47,13 @@ export default function EditUserForm(props: EditUserFormProps) {
         error={!!formik.errors.phone}
         helperText={formik.errors.phone}
       />
-      {/* <TextField
+      <DateField
         label="Дата народження"
         value={formik.values.dateOfBirth}
-        onChangeText={formik.handleChange("dateOfBirth")}
+        onChangeDate={formik.handleChange("dateOfBirth")}
         error={!!formik.errors.dateOfBirth}
         helperText={formik.errors.dateOfBirth}
-      /> */}
+      />
       <SelectField
         label="Стать"
         value={formik.values.sex}

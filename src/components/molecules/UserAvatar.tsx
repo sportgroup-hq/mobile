@@ -4,7 +4,7 @@ import { TouchableRipple, Avatar } from "react-native-paper";
 import { useGetMe } from "../../api/users";
 import { ROUTES } from "../../constants/routes";
 
-export default function MyAvatar() {
+export default function UserAvatar() {
   const router = useRouter();
 
   const { data: meData, isLoading: isGetMeLoading } = useGetMe();

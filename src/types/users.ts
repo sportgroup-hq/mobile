@@ -1,6 +1,6 @@
 export enum Sex {
-  Male,
-  Female,
+  Male = "MALE",
+  Female = "FEMALE",
 }
 
 export interface User {
@@ -10,7 +10,7 @@ export interface User {
   email: string;
   avatarUrl: string;
   phone?: string;
-  dateOfBirth?: Date;
+  dateOfBirth?: string;
   sex?: Sex;
   address?: string;
 }

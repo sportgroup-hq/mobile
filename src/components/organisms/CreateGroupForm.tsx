@@ -6,7 +6,7 @@ import { Button } from "react-native-paper";
 import { useCreateGroup } from "../../api/groups";
 import { ROUTES } from "../../constants/routes";
 import { CreateGroupSchema } from "../../helpers/validation";
-import TextField from "../atoms/TextField";
+import TextField from "../molecules/TextField";
 
 interface FormValues {
   name: string;

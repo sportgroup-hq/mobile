@@ -27,9 +27,9 @@ export default function TextField(props: TextFieldProps) {
         onChangeText={onChangeText}
         error={error}
       />
-      <HelperText type={helperTextType} visible={!!helperText}>
-        {helperText}
-      </HelperText>
+      {!!helperText && (
+        <HelperText type={helperTextType}>{helperText}</HelperText>
+      )}
     </View>
   );
 }

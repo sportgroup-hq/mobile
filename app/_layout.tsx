@@ -43,6 +43,13 @@ function RootStack() {
       />
 
       <Stack.Screen
+        name="groups/[id]/(tabs)"
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
         name="profile/me"
         options={{
           headerTitle: "Редагувати профіль",

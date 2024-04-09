@@ -56,7 +56,7 @@ export default function GroupItem(props: GroupCardProps) {
 
   return (
     <>
-      <TouchableRipple onPress={() => {}}>
+      <TouchableRipple onPress={handleGroupPress}>
         <Surface style={styles.root}>
           <View style={styles.title}>
             <Text variant="titleLarge">{group.name}</Text>
@@ -103,6 +103,10 @@ export default function GroupItem(props: GroupCardProps) {
       />
     </>
   );
+
+  function handleGroupPress() {
+    router.navigate(generatePath(ROUTES.GROUP.EVENTS, { id: group.id }));
+  }
 
   async function handleDeleteGroup() {
     await deleteGroup(group.id);

@@ -16,7 +16,7 @@ async function getGroups(): Promise<Group[]> {
   return res.data;
 }
 
-async function getGroup(id: string) {
+async function getGroup(id: string): Promise<Group> {
   const res = await mockedApiClient.get(generatePath(GROUP_URL, { id }));
   return res.data;
 }

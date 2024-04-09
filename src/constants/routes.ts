@@ -7,6 +7,7 @@ export const ROUTES = {
   },
   GROUP: {
     EVENTS: "groups/:id/events",
+    INFO: "groups/:id/info",
   },
   PROFILE: {
     ME: "profile/me",

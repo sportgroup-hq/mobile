@@ -1,9 +1,12 @@
-import { Tabs, useLocalSearchParams } from "expo-router";
-import { Icon } from "react-native-paper";
+import { Tabs, useLocalSearchParams, useRouter } from "expo-router";
+import { Icon, IconButton } from "react-native-paper";
 
 import { useGetGroup } from "../../../../src/api/groups";
+import { ROUTES } from "../../../../src/constants/routes";
+import { generatePath } from "../../../../src/helpers/misc";
 
-export default function TabLayout() {
+export default function TabsLayout() {
+  const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data: groupData } = useGetGroup(id!);
 
@@ -37,6 +40,14 @@ export default function TabLayout() {
           title: "Люди",
           tabBarIcon: ({ color }) => (
             <Icon source="account-multiple-outline" color={color} size={28} />
+          ),
+          headerRight: () => (
+            <IconButton
+              icon="information-outline"
+              onPress={() =>
+                router.navigate(generatePath(ROUTES.GROUP.INFO, { id: id! }))
+              }
+            />
           ),
         }}
       />

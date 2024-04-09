@@ -43,7 +43,7 @@ function RootStack() {
       />
 
       <Stack.Screen
-        name="groups/[id]/(tabs)"
+        name="groups/[id]"
         options={{
           headerShown: false,
         }}

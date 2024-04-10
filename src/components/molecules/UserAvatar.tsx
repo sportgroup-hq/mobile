@@ -7,14 +7,14 @@ import { ROUTES } from "../../constants/routes";
 export default function UserAvatar() {
   const router = useRouter();
 
-  const { data: meData, isLoading: isGetMeLoading } = useGetMe();
+  const { data: userData, isLoading: isGetUserLoading } = useGetMe();
 
   return (
     <TouchableRipple onPress={handlePress}>
-      {isGetMeLoading || !meData ? (
+      {isGetUserLoading || !userData ? (
         <Avatar.Icon icon="account" size={32} />
       ) : (
-        <Avatar.Image source={{ uri: meData.avatarUrl }} size={32} />
+        <Avatar.Image source={{ uri: userData.avatarUrl }} size={32} />
       )}
     </TouchableRipple>
   );

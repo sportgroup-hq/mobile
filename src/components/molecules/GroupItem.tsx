@@ -4,7 +4,7 @@ import { TouchableRipple, Surface, Text, IconButton } from "react-native-paper";
 
 import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import ConfirmDialog from "./ConfirmDialog";
-import { useDeleteGroup, useLeaveGroup } from "../../api/groups";
+import { useDeleteGroup, useLeaveGroup } from "../../api/group";
 import { useGetMe } from "../../api/users";
 import { ROUTES } from "../../constants/routes";
 import { generatePath } from "../../helpers/misc";
@@ -34,7 +34,7 @@ export default function GroupItem(props: GroupCardProps) {
   const { mutateAsync: leaveGroup, isLoading: isLeaveGroupLoading } =
     useLeaveGroup();
 
-  const { data: meData } = useGetMe();
+  const { data: userData } = useGetMe();
 
   const {
     isOpen: isDeleteGroupCDOpen,
@@ -52,11 +52,11 @@ export default function GroupItem(props: GroupCardProps) {
     handleDismiss: handleBSMSelectDismiss,
   } = useBottomSheetModal();
 
-  const isOwner = meData?.id === group.owner.id;
+  const isOwner = userData?.id === group.owner.id;
 
   return (
     <>
-      <TouchableRipple onPress={() => {}}>
+      <TouchableRipple onPress={handleGroupPress}>
         <Surface style={styles.root}>
           <View style={styles.title}>
             <Text variant="titleLarge">{group.name}</Text>
@@ -104,6 +104,10 @@ export default function GroupItem(props: GroupCardProps) {
     </>
   );
 
+  function handleGroupPress() {
+    router.navigate(generatePath(ROUTES.GROUP.EVENTS, { id: group.id }));
+  }
+
   async function handleDeleteGroup() {
     await deleteGroup(group.id);
     handleDeleteGroupCDClose();
@@ -118,7 +122,7 @@ export default function GroupItem(props: GroupCardProps) {
     handleBSMSelectDismiss();
 
     if (value === "edit") {
-      router.navigate(generatePath(ROUTES.GROUPS.EDIT, { id: group.id }));
+      router.navigate(generatePath(ROUTES.GROUP.EDIT, { id: group.id }));
       return;
     }
 

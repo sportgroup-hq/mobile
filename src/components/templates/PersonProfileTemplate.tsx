@@ -1,16 +1,18 @@
-import { View, StyleSheet, ScrollView } from "react-native";
+import { ScrollView, View, StyleSheet } from "react-native";
 import { ActivityIndicator, Avatar, Text } from "react-native-paper";
 
 import { getFullName } from "../../helpers/users";
 import { User } from "../../types/users";
-import EditUserForm from "../organisms/EditUserForm";
 
-interface UserProfileTemplateProps {
+interface PersonProfileTemplateProps {
   userData: User | undefined;
   isGetUserLoading: boolean;
 }
 
-export default function UserProfileTemplate(props: UserProfileTemplateProps) {
+export default function PersonProfileTemplate(
+  // eslint-disable-next-line prettier/prettier
+  props: PersonProfileTemplateProps
+) {
   const { userData, isGetUserLoading } = props;
 
   return (
@@ -30,7 +32,26 @@ export default function UserProfileTemplate(props: UserProfileTemplateProps) {
                   <Text variant="bodyMedium">{userData.email}</Text>
                 </View>
               </View>
-              <EditUserForm user={userData} />
+              <View style={styles.body}>
+                {userData.phone && (
+                  <View style={styles.section}>
+                    <Text variant="labelLarge">Телефон</Text>
+                    <Text variant="bodyLarge">{userData.phone}</Text>
+                  </View>
+                )}
+                {userData.dateOfBirth && (
+                  <View style={styles.section}>
+                    <Text variant="labelLarge">Дата народження</Text>
+                    <Text variant="bodyLarge">{userData.dateOfBirth}</Text>
+                  </View>
+                )}
+                {userData.address && (
+                  <View style={styles.section}>
+                    <Text variant="labelLarge">Адреса</Text>
+                    <Text variant="bodyLarge">{userData.address}</Text>
+                  </View>
+                )}
+              </View>
             </>
           )}
         </View>
@@ -57,6 +78,12 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   title: {
+    gap: 4,
+  },
+  body: {
+    gap: 24,
+  },
+  section: {
     gap: 4,
   },
 });

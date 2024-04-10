@@ -1,11 +1,17 @@
 export const ROUTES = {
-  PROFILE: {
-    ME: "profile/me",
-  },
   GROUPS: {
     ROOT: "groups",
     CREATE: "groups/create",
-    EDIT: "groups/edit/:id",
     JOIN: "groups/join",
+  },
+  GROUP: {
+    EDIT: "groups/edit/:id",
+    EVENTS: "groups/:id/events",
+    PEOPLE: "groups/:id/people",
+    INFO: "groups/:id/info",
+  },
+  PROFILE: {
+    VIEW: "profile/:id",
+    ME: "profile/me",
   },
 };

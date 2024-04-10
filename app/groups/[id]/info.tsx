@@ -1,14 +1,14 @@
 import { useLocalSearchParams } from "expo-router";
 
 import { useGetGroup } from "../../../src/api/group";
-import EditGroupTemplate from "../../../src/components/templates/EditGroupTemplate";
+import GroupInfoTemplate from "../../../src/components/templates/GroupInfoTemplate";
 
-export default function EditGroupScreen() {
+export default function GroupInfoScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data: groupData, isLoading: isGetGroupLoading } = useGetGroup(id!);
 
   return (
-    <EditGroupTemplate
+    <GroupInfoTemplate
       groupData={groupData}
       isGetGroupLoading={isGetGroupLoading}
     />

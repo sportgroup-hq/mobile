@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
 
-import { useEditGroup } from "../../api/groups";
+import { useEditGroup } from "../../api/group";
 import { EditGroupSchema } from "../../helpers/validation";
 import { Group } from "../../types/groups";
 import TextField from "../molecules/TextField";

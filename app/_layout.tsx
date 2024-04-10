@@ -50,6 +50,13 @@ function RootStack() {
       />
 
       <Stack.Screen
+        name="profile/[id]"
+        options={{
+          headerTitle: "",
+          headerBackTitleVisible: false,
+        }}
+      />
+      <Stack.Screen
         name="profile/me"
         options={{
           headerTitle: "Редагувати профіль",

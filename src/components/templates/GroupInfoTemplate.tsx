@@ -18,7 +18,7 @@ export default function GroupInfoTemplate(props: GroupInfoTemplateProps) {
           {isGetGroupLoading || !groupData ? (
             <ActivityIndicator />
           ) : (
-            <View style={styles.content}>
+            <View style={styles.body}>
               <View style={styles.section}>
                 <Text variant="labelLarge">Назва</Text>
                 <Text variant="bodyLarge">{groupData.name}</Text>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 8,
   },
-  content: {
+  body: {
     gap: 24,
   },
   section: {

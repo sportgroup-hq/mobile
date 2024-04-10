@@ -2,12 +2,7 @@ import Toast from "react-native-toast-message";
 import { useQueryClient, useQuery, useMutation } from "react-query";
 
 import mockedApiClient from "./mockedApiClient";
-import {
-  GROUPS_KEY,
-  GROUPS_URL,
-  GROUP_JOIN_URL,
-  GROUP_URL,
-} from "../constants/groups";
+import { GROUPS_KEY, GROUPS_URL, GROUP_JOIN_URL } from "../constants/groups";
 import { generatePath } from "../helpers/misc";
 import { Group } from "../types/groups";
 
@@ -16,29 +11,8 @@ async function getGroups(): Promise<Group[]> {
   return res.data;
 }
 
-async function getGroup(id: string): Promise<Group> {
-  const res = await mockedApiClient.get(generatePath(GROUP_URL, { id }));
-  return res.data;
-}
-
 async function createGroup(data: Pick<Group, "name" | "sport">) {
   const res = await mockedApiClient.post(GROUPS_URL, data);
-  return res.data;
-}
-
-async function editGroup({
-  id,
-  data,
-}: {
-  id: string;
-  data: Required<Pick<Group, "name" | "sport">>;
-}) {
-  const res = await mockedApiClient.put(generatePath(GROUP_URL, { id }), data);
-  return res.data;
-}
-
-async function deleteGroup(id: string) {
-  const res = await mockedApiClient.delete(generatePath(GROUP_URL, { id }));
   return res.data;
 }
 
@@ -54,13 +28,6 @@ export function useGetGroups() {
   });
 }
 
-export function useGetGroup(id: string) {
-  return useQuery({
-    queryKey: [GROUPS_KEY, id],
-    queryFn: () => getGroup(id),
-  });
-}
-
 export function useCreateGroup() {
   const queryClient = useQueryClient();
 
@@ -70,70 +37,6 @@ export function useCreateGroup() {
       Toast.show({
         type: "success",
         text1: "Ви успішно створили групу!",
-      });
-      queryClient.invalidateQueries({ queryKey: [GROUPS_KEY] });
-    },
-    onError: () => {
-      Toast.show({
-        type: "error",
-        text1: "Щось пішло не так!",
-      });
-    },
-  });
-}
-
-export function useEditGroup() {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: editGroup,
-    onSuccess: (_, { id }) => {
-      Toast.show({
-        type: "success",
-        text1: "Ви успішно відредагували групу!",
-      });
-      queryClient.invalidateQueries({ queryKey: [GROUPS_KEY] });
-      queryClient.invalidateQueries({ queryKey: [GROUPS_KEY, id] });
-    },
-    onError: () => {
-      Toast.show({
-        type: "error",
-        text1: "Щось пішло не так!",
-      });
-    },
-  });
-}
-
-export function useDeleteGroup() {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: deleteGroup,
-    onSuccess: () => {
-      Toast.show({
-        type: "success",
-        text1: "Ви успішно видалили групу!",
-      });
-      queryClient.invalidateQueries({ queryKey: [GROUPS_KEY] });
-    },
-    onError: () => {
-      Toast.show({
-        type: "error",
-        text1: "Щось пішло не так!",
-      });
-    },
-  });
-}
-
-export function useLeaveGroup() {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: deleteGroup,
-    onSuccess: () => {
-      Toast.show({
-        type: "success",
-        text1: "Ви успішно покинули групу!",
       });
       queryClient.invalidateQueries({ queryKey: [GROUPS_KEY] });
     },

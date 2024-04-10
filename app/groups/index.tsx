@@ -4,19 +4,19 @@ import GroupsTemplate from "../../src/components/templates/GroupsTemplate";
 
 export default function GroupsScreen() {
   const { data: groupsData, isLoading: isGetGroupsLoading } = useGetGroups();
-  const { data: meData, isLoading: isGetMeLoading } = useGetMe();
+  const { data: userData, isLoading: isGetUserLoading } = useGetMe();
 
-  if (isGetGroupsLoading || !groupsData || isGetMeLoading || !meData) {
+  if (isGetGroupsLoading || !groupsData || isGetUserLoading || !userData) {
     return <GroupsTemplate createdGroups={[]} joinedGroups={[]} isLoading />;
   }
 
   const createdGroups = groupsData.filter(
     // eslint-disable-next-line prettier/prettier
-    (group) => meData.id === group.owner.id
+    (group) => userData.id === group.owner.id
   );
   const joinedGroups = groupsData.filter(
     // eslint-disable-next-line prettier/prettier
-    (group) => meData.id !== group.owner.id
+    (group) => userData.id !== group.owner.id
   );
 
   return (

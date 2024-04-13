@@ -9,3 +9,8 @@ export interface Group {
   createdAt: string;
   editedAt: string;
 }
+
+export interface SelectedGroups {
+  createdGroups: Group[];
+  joinedGroups: Group[];
+}

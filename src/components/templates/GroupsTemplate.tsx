@@ -4,14 +4,13 @@ import { ActivityIndicator, Button, FAB, Text } from "react-native-paper";
 
 import { ROUTES } from "../../constants/routes";
 import useBottomSheetModal from "../../hooks/useBottomSheetModal";
-import { Group } from "../../types/groups";
+import { SelectedGroups } from "../../types/groups";
 import BottomSheetModalSelect from "../molecules/BottomSheetModalSelect";
 import GroupList from "../organisms/GroupList";
 
 interface GroupsTemplateProps {
-  createdGroups: Group[];
-  joinedGroups: Group[];
-  isLoading: boolean;
+  groupsData: SelectedGroups | undefined;
+  isGetGroupsLoading: boolean;
 }
 
 const ACTION_OPTIONS = [
@@ -20,7 +19,7 @@ const ACTION_OPTIONS = [
 ];
 
 export default function GroupsTemplate(props: GroupsTemplateProps) {
-  const { isLoading, createdGroups, joinedGroups } = props;
+  const { groupsData, isGetGroupsLoading } = props;
 
   const router = useRouter();
 
@@ -47,6 +46,9 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
   );
 
   function renderContent() {
+    const createdGroups = groupsData?.createdGroups || [];
+    const joinedGroups = groupsData?.joinedGroups || [];
+
     const hasCreatedGroups = !!createdGroups.length;
     const hasJoinedGroups = !!joinedGroups.length;
 
@@ -54,7 +56,7 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
       <View style={styles.main}>
         <View style={styles.section}>
           <Text variant="headlineSmall">Групи, якими ви керуєте</Text>
-          {isLoading ? (
+          {isGetGroupsLoading ? (
             <ActivityIndicator />
           ) : !hasCreatedGroups ? (
             <View style={styles.empty}>
@@ -67,7 +69,7 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
         </View>
         <View style={styles.section}>
           <Text variant="headlineSmall">Групи, до яких ви приєдналися</Text>
-          {isLoading ? (
+          {isGetGroupsLoading ? (
             <ActivityIndicator />
           ) : !hasJoinedGroups ? (
             <View style={styles.empty}>

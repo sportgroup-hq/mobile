@@ -1,9 +1,10 @@
+import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Tabs, useLocalSearchParams, useRouter } from "expo-router";
 import { Icon, IconButton } from "react-native-paper";
 
-import { useGetGroup } from "../../../../src/api/group";
-import { ROUTES } from "../../../../src/constants/routes";
-import { generatePath } from "../../../../src/helpers/misc";
+import { useGetGroup } from "../../../../../src/api/group";
+import { ROUTES } from "../../../../../src/constants/routes";
+import { generatePath } from "../../../../../src/helpers/misc";
 
 export default function TabsLayout() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerTitle: groupData?.name || "",
+        headerLeft: DrawerToggleButton,
       }}
     >
       <Tabs.Screen

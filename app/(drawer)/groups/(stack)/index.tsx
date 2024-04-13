@@ -1,6 +1,6 @@
-import { useGetGroups } from "../../src/api/groups";
-import { useGetMe } from "../../src/api/users";
-import GroupsTemplate from "../../src/components/templates/GroupsTemplate";
+import { useGetGroups } from "../../../../src/api/groups";
+import { useGetMe } from "../../../../src/api/users";
+import GroupsTemplate from "../../../../src/components/templates/GroupsTemplate";
 
 export default function GroupsScreen() {
   const { data: groupsData, isLoading: isGetGroupsLoading } = useGetGroups();

@@ -1,3 +1,3 @@
 export const BASE_URL = "";
 export const MOCKED_BASE_URL =
-  "https://82244289-1045-4922-8c27-7d13a9316ee5.mock.pstmn.io";
+  "https://5b9ae574-4dc7-4bb7-b845-c43bf4958fb6.mock.pstmn.io";

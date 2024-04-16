@@ -7,45 +7,47 @@ import { en, registerTranslation } from "react-native-paper-dates";
 import Toast from "react-native-toast-message";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import UserAvatar from "../src/components/molecules/UserAvatar";
-
 registerTranslation("en", en);
 
 const queryClient = new QueryClient();
 
 function RootStack() {
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerBackTitleVisible: false,
+      }}
+    >
       <Stack.Screen
-        name="groups/index"
+        name="(drawer)"
         options={{
-          headerTitle: "",
-          headerRight: UserAvatar,
+          headerShown: false,
         }}
       />
+
       <Stack.Screen
-        name="groups/create"
+        name="(home)/create"
         options={{
           headerTitle: "Створити групу",
         }}
       />
       <Stack.Screen
-        name="groups/join"
+        name="(home)/join"
         options={{
           headerTitle: "Приєднатися до групи",
         }}
       />
       <Stack.Screen
-        name="groups/edit/[id]"
+        name="(home)/edit/[id]"
         options={{
           headerTitle: "Редагувати групу",
         }}
       />
 
       <Stack.Screen
-        name="groups/[id]"
+        name="groups/[id]/info"
         options={{
-          headerShown: false,
+          headerTitle: "Інформація",
         }}
       />
 
@@ -53,7 +55,6 @@ function RootStack() {
         name="profile/[id]"
         options={{
           headerTitle: "",
-          headerBackTitleVisible: false,
         }}
       />
       <Stack.Screen

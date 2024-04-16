@@ -122,7 +122,7 @@ export default function GroupItem(props: GroupCardProps) {
     handleBSMSelectDismiss();
 
     if (value === "edit") {
-      router.navigate(generatePath(ROUTES.GROUP.EDIT, { id: group.id }));
+      router.navigate(generatePath(ROUTES.HOME.EDIT, { id: group.id }));
       return;
     }
 

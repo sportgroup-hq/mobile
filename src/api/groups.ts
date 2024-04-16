@@ -2,6 +2,7 @@ import Toast from "react-native-toast-message";
 import { useQueryClient, useQuery, useMutation } from "react-query";
 
 import mockedApiClient from "./mockedApiClient";
+import { useGetMe } from "./users";
 import { GROUPS_KEY, GROUPS_URL, GROUP_JOIN_URL } from "../constants/groups";
 import { generatePath } from "../helpers/misc";
 import { Group } from "../types/groups";
@@ -22,9 +23,33 @@ async function joinGroup(data: Required<Pick<Group, "code">>) {
 }
 
 export function useGetGroups() {
+  const { data: userData, isLoading: isGetUserLoading } = useGetMe();
+
   return useQuery({
     queryKey: [GROUPS_KEY],
     queryFn: getGroups,
+    select: (data) => {
+      if (isGetUserLoading || !userData) {
+        return {
+          createdGroups: [],
+          joinedGroups: [],
+        };
+      }
+
+      const createdGroups = data.filter(
+        // eslint-disable-next-line prettier/prettier
+        (group) => userData.id === group.owner.id
+      );
+      const joinedGroups = data.filter(
+        // eslint-disable-next-line prettier/prettier
+        (group) => userData.id !== group.owner.id
+      );
+
+      return {
+        createdGroups,
+        joinedGroups,
+      };
+    },
   });
 }
 

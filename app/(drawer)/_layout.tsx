@@ -70,7 +70,7 @@ function DrawerContent(props: DrawerContentComponentProps) {
   );
 
   function handleHomePress() {
-    router.navigate(ROUTES.GROUPS.ROOT);
+    router.navigate(ROUTES.HOME.ROOT);
   }
 
   function handleGroupPress(id: string) {

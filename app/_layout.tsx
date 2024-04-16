@@ -13,7 +13,11 @@ const queryClient = new QueryClient();
 
 function RootStack() {
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerBackTitleVisible: false,
+      }}
+    >
       <Stack.Screen
         name="(drawer)"
         options={{
@@ -22,17 +26,41 @@ function RootStack() {
       />
 
       <Stack.Screen
+        name="(home)/create"
+        options={{
+          headerTitle: "Створити групу",
+        }}
+      />
+      <Stack.Screen
+        name="(home)/join"
+        options={{
+          headerTitle: "Приєднатися до групи",
+        }}
+      />
+      <Stack.Screen
+        name="(home)/edit/[id]"
+        options={{
+          headerTitle: "Редагувати групу",
+        }}
+      />
+
+      <Stack.Screen
+        name="groups/[id]/info"
+        options={{
+          headerTitle: "Інформація",
+        }}
+      />
+
+      <Stack.Screen
         name="profile/[id]"
         options={{
           headerTitle: "",
-          headerBackTitleVisible: false,
         }}
       />
       <Stack.Screen
         name="profile/me"
         options={{
           headerTitle: "Редагувати профіль",
-          headerBackTitleVisible: false,
         }}
       />
     </Stack>

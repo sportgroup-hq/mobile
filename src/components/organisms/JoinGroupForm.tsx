@@ -56,7 +56,7 @@ export default function CreateGroupForm() {
 
   async function handleSubmit(values: FormValues) {
     await joinGroup(values);
-    router.navigate(ROUTES.GROUPS.ROOT);
+    router.navigate(ROUTES.HOME.ROOT);
   }
 }
 const styles = StyleSheet.create({

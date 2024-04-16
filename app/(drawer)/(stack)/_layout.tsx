@@ -2,7 +2,7 @@ import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Stack } from "expo-router";
 import { View, StyleSheet } from "react-native";
 
-import UserAvatar from "../../../../src/components/molecules/UserAvatar";
+import UserAvatar from "../../../src/components/molecules/UserAvatar";
 
 export default function StackLayout() {
   return (
@@ -20,21 +20,9 @@ export default function StackLayout() {
         }}
       />
       <Stack.Screen
-        name="create"
+        name="groups/[id]/(tabs)"
         options={{
-          headerTitle: "Створити групу",
-        }}
-      />
-      <Stack.Screen
-        name="join"
-        options={{
-          headerTitle: "Приєднатися до групи",
-        }}
-      />
-      <Stack.Screen
-        name="edit/[id]"
-        options={{
-          headerTitle: "Редагувати групу",
+          headerShown: false,
         }}
       />
     </Stack>

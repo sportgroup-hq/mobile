@@ -14,8 +14,8 @@ interface GroupsTemplateProps {
 }
 
 const ACTION_OPTIONS = [
-  { label: "Приєднатися до групи", value: ROUTES.GROUPS.JOIN },
-  { label: "Створити групу", value: ROUTES.GROUPS.CREATE },
+  { label: "Приєднатися до групи", value: ROUTES.HOME.JOIN },
+  { label: "Створити групу", value: ROUTES.HOME.CREATE },
 ];
 
 export default function GroupsTemplate(props: GroupsTemplateProps) {
@@ -92,7 +92,7 @@ export default function GroupsTemplate(props: GroupsTemplateProps) {
   }
 
   function handleCreateGroupPress() {
-    router.navigate(ROUTES.GROUPS.CREATE);
+    router.navigate(ROUTES.HOME.CREATE);
   }
 }
 

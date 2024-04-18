@@ -1,7 +1,8 @@
 import { StyleSheet, View } from "react-native";
 
-import { Group } from "../../types/groups";
 import GroupItem from "../molecules/GroupItem";
+
+import { Group } from "~/types/groups";
 
 interface GroupListProps {
   groups: Group[];

@@ -8,7 +8,7 @@ import { StyleSheet, View } from "react-native";
 import { Drawer as PaperDrawer } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { ROUTES } from "../../src/constants/routes";
+import { ROUTES } from "~/constants/routes";
 
 function DrawerContent(props: DrawerContentComponentProps) {
   const router = useRouter();

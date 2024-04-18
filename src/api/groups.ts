@@ -3,9 +3,10 @@ import { useQueryClient, useQuery, useMutation } from "react-query";
 
 import mockedApiClient from "./mockedApiClient";
 import { useGetMe } from "./users";
-import { GROUPS_KEY, GROUPS_URL, GROUP_JOIN_URL } from "../constants/groups";
-import { generatePath } from "../helpers/misc";
-import { Group } from "../types/groups";
+
+import { GROUPS_KEY, GROUPS_URL, GROUP_JOIN_URL } from "~/constants/groups";
+import { generatePath } from "~/helpers/misc";
+import { Group } from "~/types/groups";
 
 async function getGroups(): Promise<Group[]> {
   const res = await mockedApiClient.get(GROUPS_URL);

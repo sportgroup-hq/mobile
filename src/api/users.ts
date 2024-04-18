@@ -1,9 +1,10 @@
 import { useQuery } from "react-query";
 
 import mockedApiClient from "./mockedApiClient";
-import { ME_KEY, ME_URL, PROFILE_KEY, PROFILE_URL } from "../constants/users";
-import { generatePath } from "../helpers/misc";
-import { User } from "../types/users";
+
+import { ME_KEY, ME_URL, PROFILE_KEY, PROFILE_URL } from "~/constants/users";
+import { generatePath } from "~/helpers/misc";
+import { User } from "~/types/users";
 
 async function getMe() {
   const res = await mockedApiClient.get(ME_URL);

@@ -4,14 +4,15 @@ import { TouchableRipple, Surface, Text, IconButton } from "react-native-paper";
 
 import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import ConfirmDialog from "./ConfirmDialog";
-import { useDeleteGroup, useLeaveGroup } from "../../api/group";
-import { useGetMe } from "../../api/users";
-import { ROUTES } from "../../constants/routes";
-import { generatePath } from "../../helpers/misc";
-import { getFullName } from "../../helpers/users";
-import useBottomSheetModal from "../../hooks/useBottomSheetModal";
-import useDialog from "../../hooks/useDialog";
-import { Group } from "../../types/groups";
+
+import { useDeleteGroup, useLeaveGroup } from "~/api/group";
+import { useGetMe } from "~/api/users";
+import { ROUTES } from "~/constants/routes";
+import { generatePath } from "~/helpers/misc";
+import { getFullName } from "~/helpers/users";
+import useBottomSheetModal from "~/hooks/useBottomSheetModal";
+import useDialog from "~/hooks/useDialog";
+import { Group } from "~/types/groups";
 
 const OWNER_ACTION_OPTIONS = [
   { label: "Редагувати групу", value: "edit" },

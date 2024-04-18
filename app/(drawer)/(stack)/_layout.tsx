@@ -2,7 +2,7 @@ import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Stack } from "expo-router";
 import { View, StyleSheet } from "react-native";
 
-import UserAvatar from "../../../src/components/molecules/UserAvatar";
+import UserAvatar from "~/components/molecules/UserAvatar";
 
 export default function StackLayout() {
   return (

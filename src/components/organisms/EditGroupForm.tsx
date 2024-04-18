@@ -2,10 +2,11 @@ import { useFormik } from "formik";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
 
-import { useEditGroup } from "../../api/group";
-import { EditGroupSchema } from "../../helpers/validation";
-import { Group } from "../../types/groups";
 import TextField from "../molecules/TextField";
+
+import { useEditGroup } from "~/api/group";
+import { EditGroupSchema } from "~/helpers/validation";
+import { Group } from "~/types/groups";
 
 interface FormValues {
   name: string;

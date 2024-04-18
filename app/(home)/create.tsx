@@ -1,4 +1,4 @@
-import CreateGroupTemplate from "../../src/components/templates/CreateGroupTemplate";
+import CreateGroupTemplate from "~/components/templates/CreateGroupTemplate";
 
 export default function CreateGroupScreen() {
   return <CreateGroupTemplate />;

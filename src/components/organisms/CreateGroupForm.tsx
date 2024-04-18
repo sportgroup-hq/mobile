@@ -3,10 +3,11 @@ import { useFormik } from "formik";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
 
-import { useCreateGroup } from "../../api/groups";
-import { ROUTES } from "../../constants/routes";
-import { CreateGroupSchema } from "../../helpers/validation";
 import TextField from "../molecules/TextField";
+
+import { useCreateGroup } from "~/api/groups";
+import { ROUTES } from "~/constants/routes";
+import { CreateGroupSchema } from "~/helpers/validation";
 
 interface FormValues {
   name: string;

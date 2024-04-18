@@ -1,7 +1,7 @@
 import { ScrollView, View, StyleSheet } from "react-native";
 import { ActivityIndicator, Text } from "react-native-paper";
 
-import { Group } from "../../types/groups";
+import { Group } from "~/types/groups";
 
 interface GroupInfoTemplateProps {
   groupData: Group | undefined;

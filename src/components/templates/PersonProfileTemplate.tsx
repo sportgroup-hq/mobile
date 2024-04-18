@@ -1,8 +1,8 @@
 import { ScrollView, View, StyleSheet } from "react-native";
 import { ActivityIndicator, Avatar, Text } from "react-native-paper";
 
-import { getFullName } from "../../helpers/users";
-import { User } from "../../types/users";
+import { getFullName } from "~/helpers/users";
+import { User } from "~/types/users";
 
 interface PersonProfileTemplateProps {
   userData: User | undefined;

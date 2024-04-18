@@ -1,10 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 
-import {
-  useGetGroupPeople,
-  useGetGroup,
-} from "../../../../../../src/api/group";
-import { GroupPeopleTemplate } from "../../../../../../src/components/templates/GroupPeopleTemplate";
+import { useGetGroupPeople, useGetGroup } from "~/api/group";
+import { GroupPeopleTemplate } from "~/components/templates/GroupPeopleTemplate";
 
 export default function GroupPeopleScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();

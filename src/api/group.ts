@@ -2,15 +2,16 @@ import Toast from "react-native-toast-message";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 import mockedApiClient from "./mockedApiClient";
+
 import {
   GROUP_PEOPLE_KEY,
   GROUP_PEOPLE_URL,
   GROUP_URL,
-} from "../constants/group";
-import { GROUPS_KEY } from "../constants/groups";
-import { generatePath } from "../helpers/misc";
-import { Group } from "../types/groups";
-import { User } from "../types/users";
+} from "~/constants/group";
+import { GROUPS_KEY } from "~/constants/groups";
+import { generatePath } from "~/helpers/misc";
+import { Group } from "~/types/groups";
+import { User } from "~/types/users";
 
 async function getGroup(id: string): Promise<Group> {
   const res = await mockedApiClient.get(generatePath(GROUP_URL, { id }));

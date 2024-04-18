@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 
-import { useGetProfile } from "../../src/api/users";
-import PersonProfileTemplate from "../../src/components/templates/PersonProfileTemplate";
+import { useGetProfile } from "~/api/users";
+import PersonProfileTemplate from "~/components/templates/PersonProfileTemplate";
 
 export default function PersonProfileScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();

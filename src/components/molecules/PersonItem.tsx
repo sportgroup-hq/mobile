@@ -2,10 +2,10 @@ import { useRouter } from "expo-router";
 import { StyleSheet, View } from "react-native";
 import { TouchableRipple, Text, Avatar } from "react-native-paper";
 
-import { ROUTES } from "../../constants/routes";
-import { generatePath } from "../../helpers/misc";
-import { getFullName } from "../../helpers/users";
-import { User } from "../../types/users";
+import { ROUTES } from "~/constants/routes";
+import { generatePath } from "~/helpers/misc";
+import { getFullName } from "~/helpers/users";
+import { User } from "~/types/users";
 
 interface PersonItemProps {
   user: User;

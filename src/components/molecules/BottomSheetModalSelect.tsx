@@ -8,7 +8,7 @@ import { forwardRef } from "react";
 import { StyleSheet, View } from "react-native";
 import { TouchableRipple, Text } from "react-native-paper";
 
-import { Option } from "../../types/misc";
+import { Option } from "~/types/misc";
 
 interface BottomSheetModalSelectProps {
   options: Option[];

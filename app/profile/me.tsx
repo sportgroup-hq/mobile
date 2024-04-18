@@ -1,5 +1,5 @@
-import { useGetMe } from "../../src/api/users";
-import UserProfileTemplate from "../../src/components/templates/UserProfileTemplate";
+import { useGetMe } from "~/api/users";
+import UserProfileTemplate from "~/components/templates/UserProfileTemplate";
 
 export default function UserProfileScreen() {
   const { data: userData, isLoading: isGetUserLoading } = useGetMe();

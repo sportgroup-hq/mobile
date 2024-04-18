@@ -11,7 +11,7 @@ export const ROUTES = {
     INFO: "/groups/:id/info",
   },
   PROFILE: {
-    VIEW: "profile/:id",
-    ME: "profile/me",
+    VIEW: "/profile/:id",
+    ME: "/profile/me",
   },
 };

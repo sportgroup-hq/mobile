@@ -8,7 +8,8 @@ import {
 
 import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import useBottomSheetModal from "../../hooks/useBottomSheetModal";
-import { Option } from "../../types/misc";
+
+import { Option } from "~/types/misc";
 
 interface TextFieldProps {
   label: TextInputProps["label"];

@@ -1,8 +1,9 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ActivityIndicator, Text } from "react-native-paper";
 
-import { User } from "../../types/users";
 import PersonList from "../organisms/PersonList";
+
+import { User } from "~/types/users";
 
 interface GroupPeopleTemplateProps {
   coaches: User[];

@@ -2,11 +2,12 @@ import { useRouter } from "expo-router";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { ActivityIndicator, Button, FAB, Text } from "react-native-paper";
 
-import { ROUTES } from "../../constants/routes";
-import useBottomSheetModal from "../../hooks/useBottomSheetModal";
-import { SelectedGroups } from "../../types/groups";
 import BottomSheetModalSelect from "../molecules/BottomSheetModalSelect";
 import GroupList from "../organisms/GroupList";
+
+import { ROUTES } from "~/constants/routes";
+import useBottomSheetModal from "~/hooks/useBottomSheetModal";
+import { SelectedGroups } from "~/types/groups";
 
 interface GroupsTemplateProps {
   groupsData: SelectedGroups | undefined;

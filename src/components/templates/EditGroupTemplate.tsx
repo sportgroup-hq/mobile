@@ -1,8 +1,9 @@
 import { StyleSheet, View, ScrollView } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 
-import { Group } from "../../types/groups";
 import EditGroupForm from "../organisms/EditGroupForm";
+
+import { Group } from "~/types/groups";
 
 interface EditGroupTemplateProps {
   groupData: Group | undefined;

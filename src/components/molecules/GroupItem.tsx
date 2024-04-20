@@ -5,7 +5,7 @@ import { TouchableRipple, Surface, Text, IconButton } from "react-native-paper";
 import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import ConfirmDialog from "./ConfirmDialog";
 
-import { useDeleteGroup, useLeaveGroup } from "~/api/group";
+import { useDeleteGroup, useLeaveGroup } from "~/api/groups";
 import { useGetMe } from "~/api/users";
 import { ROUTES } from "~/constants/routes";
 import { generatePath } from "~/helpers/misc";

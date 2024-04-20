@@ -4,7 +4,7 @@ import { Button } from "react-native-paper";
 
 import TextField from "../molecules/TextField";
 
-import { useEditGroup } from "~/api/group";
+import { useEditGroup } from "~/api/groups";
 import { EditGroupSchema } from "~/helpers/validation";
 import { Group } from "~/types/groups";
 

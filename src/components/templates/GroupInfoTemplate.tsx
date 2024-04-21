@@ -1,6 +1,8 @@
 import { ScrollView, View, StyleSheet } from "react-native";
 import { ActivityIndicator, Text } from "react-native-paper";
 
+import TextWithCopyButton from "../molecules/TextWithCopyButton";
+
 import { Group } from "~/types/groups";
 
 interface GroupInfoTemplateProps {
@@ -32,7 +34,13 @@ export default function GroupInfoTemplate(props: GroupInfoTemplateProps) {
               {groupData.code && (
                 <View style={styles.section}>
                   <Text variant="labelLarge">Код</Text>
-                  <Text variant="bodyLarge">{groupData.code}</Text>
+                  <TextWithCopyButton
+                    variant="bodyLarge"
+                    copyableText={groupData.code}
+                    successToastText="Код групи скопійовано"
+                  >
+                    {groupData.code}
+                  </TextWithCopyButton>
                 </View>
               )}
             </View>

@@ -2,7 +2,7 @@ import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Tabs, useLocalSearchParams, useRouter } from "expo-router";
 import { Icon, IconButton } from "react-native-paper";
 
-import { useGetGroup } from "~/api/group";
+import { useGetGroup } from "~/api/groups";
 import { ROUTES } from "~/constants/routes";
 import { generatePath } from "~/helpers/misc";
 

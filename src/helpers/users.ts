@@ -1,3 +1,5 @@
-export function getFullName(firstName: string, lastName: string) {
-  return `${firstName} ${lastName}`;
+import { User } from "~/types/users";
+
+export function getFullName(user: User) {
+  return `${user.firstName} ${user.lastName}`;
 }

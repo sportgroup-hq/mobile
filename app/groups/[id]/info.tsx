@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 
-import { useGetGroup } from "~/api/group";
+import { useGetGroup } from "~/api/groups";
 import GroupInfoTemplate from "~/components/templates/GroupInfoTemplate";
 
 export default function GroupInfoScreen() {

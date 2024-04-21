@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 
-import { useGetGroup } from "~/api/group";
+import { useGetGroup } from "~/api/groups";
 import EditGroupTemplate from "~/components/templates/EditGroupTemplate";
 
 export default function EditGroupScreen() {

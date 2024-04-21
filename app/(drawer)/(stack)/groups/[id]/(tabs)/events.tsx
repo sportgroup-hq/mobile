@@ -1,5 +1,16 @@
-import { View } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+
+import { useGetEvents } from "~/api/events";
+import GroupEventsTemplate from "~/components/templates/GroupEventsTemplate";
 
 export default function GroupEventsScreen() {
-  return <View />;
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const { data: eventsData, isLoading: isGetEventsLoading } = useGetEvents(id!);
+
+  return (
+    <GroupEventsTemplate
+      eventsData={eventsData}
+      isGetEventsLoading={isGetEventsLoading}
+    />
+  );
 }

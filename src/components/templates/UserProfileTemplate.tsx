@@ -25,9 +25,7 @@ export default function UserProfileTemplate(props: UserProfileTemplateProps) {
               <View style={styles.header}>
                 <Avatar.Image source={{ uri: userData.avatarUrl }} />
                 <View style={styles.title}>
-                  <Text variant="titleLarge">
-                    {getFullName(userData.firstName, userData.lastName)}
-                  </Text>
+                  <Text variant="titleLarge">{getFullName(userData)}</Text>
                   <Text variant="bodyMedium">{userData.email}</Text>
                 </View>
               </View>

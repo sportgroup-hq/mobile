@@ -23,10 +23,12 @@ export default function GroupInfoTemplate(props: GroupInfoTemplateProps) {
                 <Text variant="labelLarge">Назва</Text>
                 <Text variant="bodyLarge">{groupData.name}</Text>
               </View>
-              <View style={styles.section}>
-                <Text variant="labelLarge">Вид спорту</Text>
-                <Text variant="bodyLarge">{groupData.sport}</Text>
-              </View>
+              {groupData.sport && (
+                <View style={styles.section}>
+                  <Text variant="labelLarge">Вид спорту</Text>
+                  <Text variant="bodyLarge">{groupData.sport}</Text>
+                </View>
+              )}
               {groupData.code && (
                 <View style={styles.section}>
                   <Text variant="labelLarge">Код</Text>

@@ -20,9 +20,7 @@ export default function PersonItem(props: PersonItemProps) {
     <TouchableRipple onPress={handlePersonPress}>
       <View style={styles.root}>
         <Avatar.Image source={{ uri: user.avatarUrl }} size={48} />
-        <Text variant="bodyLarge">
-          {getFullName(user.firstName, user.lastName)}
-        </Text>
+        <Text variant="bodyLarge">{getFullName(user)}</Text>
       </View>
     </TouchableRipple>
   );

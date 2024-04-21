@@ -63,9 +63,7 @@ export default function GroupItem(props: GroupCardProps) {
           </View>
           <View>
             {!isOwner && (
-              <Text variant="bodySmall">
-                {getFullName(group.owner.firstName, group.owner.lastName)}
-              </Text>
+              <Text variant="bodySmall">{getFullName(group.owner)}</Text>
             )}
           </View>
           <IconButton

@@ -6,6 +6,7 @@ import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import ConfirmDialog from "./ConfirmDialog";
 
 import { ROUTES } from "~/constants/routes";
+import { getDateRange } from "~/helpers/events";
 import { generatePath } from "~/helpers/misc";
 import useBottomSheetModal from "~/hooks/useBottomSheetModal";
 import useDialog from "~/hooks/useDialog";
@@ -46,7 +47,7 @@ export default function EventItem(props: EventItemProps) {
         <View style={styles.root}>
           <View style={styles.left}>
             <Text variant="titleMedium">{event.name}</Text>
-            <Text variant="bodyMedium">Сьогодні</Text>
+            <Text variant="bodyMedium">{getDateRange(event)}</Text>
           </View>
           {isOwner && (
             <IconButton

@@ -7,6 +7,8 @@ import { en, registerTranslation } from "react-native-paper-dates";
 import Toast from "react-native-toast-message";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import "~/utils/dayjs";
+
 registerTranslation("en", en);
 
 const queryClient = new QueryClient();

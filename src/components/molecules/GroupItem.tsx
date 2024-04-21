@@ -6,12 +6,12 @@ import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import ConfirmDialog from "./ConfirmDialog";
 
 import { useDeleteGroup, useLeaveGroup } from "~/api/groups";
-import { useGetMe } from "~/api/users";
 import { ROUTES } from "~/constants/routes";
 import { generatePath } from "~/helpers/misc";
 import { getFullName } from "~/helpers/users";
 import useBottomSheetModal from "~/hooks/useBottomSheetModal";
 import useDialog from "~/hooks/useDialog";
+import useIsOwner from "~/hooks/useIsOwner";
 import { Group } from "~/types/groups";
 
 const OWNER_ACTION_OPTIONS = [
@@ -35,7 +35,7 @@ export default function GroupItem(props: GroupCardProps) {
   const { mutateAsync: leaveGroup, isLoading: isLeaveGroupLoading } =
     useLeaveGroup();
 
-  const { data: userData } = useGetMe();
+  const isOwner = useIsOwner(group.id);
 
   const {
     isOpen: isDeleteGroupCDOpen,
@@ -52,8 +52,6 @@ export default function GroupItem(props: GroupCardProps) {
     handlePresent: handleBSMSelectPresent,
     handleDismiss: handleBSMSelectDismiss,
   } = useBottomSheetModal();
-
-  const isOwner = userData?.id === group.owner.id;
 
   return (
     <>

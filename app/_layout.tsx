@@ -47,9 +47,15 @@ function RootStack() {
       />
 
       <Stack.Screen
-        name="groups/[id]/info"
+        name="groups/[groupId]/info"
         options={{
           headerTitle: "Інформація",
+        }}
+      />
+      <Stack.Screen
+        name="groups/[groupId]/events/[eventId]/index"
+        options={{
+          headerTitle: "",
         }}
       />
 

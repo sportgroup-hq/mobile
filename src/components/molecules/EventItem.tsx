@@ -75,7 +75,15 @@ export default function EventItem(props: EventItemProps) {
     </>
   );
 
-  function handleEventPress() {}
+  function handleEventPress() {
+    router.navigate(
+      generatePath(ROUTES.EVENT.VIEW, {
+        groupId: id!,
+        eventId: event.id,
+        // eslint-disable-next-line prettier/prettier
+      })
+    );
+  }
 
   function handleDeleteEvent() {}
 

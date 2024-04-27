@@ -10,7 +10,7 @@ import useBottomSheetModal from "~/hooks/useBottomSheetModal";
 import { Event } from "~/types/events";
 
 const ACTION_OPTIONS = [
-  { label: "Створити подію", value: ROUTES.GROUP.CREATE_EVENT },
+  { label: "Створити подію", value: ROUTES.EVENT.CREATE },
 ];
 interface GroupEventsTemplateProps {
   eventsData: Event[] | undefined;

@@ -92,7 +92,7 @@ export default function EventItem(props: EventItemProps) {
 
     if (value === "edit") {
       router.navigate(
-        generatePath(ROUTES.GROUP.EDIT_EVENT, {
+        generatePath(ROUTES.EVENT.EDIT, {
           groupId: id!,
           eventId: event.id,
           // eslint-disable-next-line prettier/prettier

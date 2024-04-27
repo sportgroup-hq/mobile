@@ -1,20 +1,21 @@
 import { StyleSheet, View } from "react-native";
 
-import PersonItem from "../molecules/PersonItem";
+import UserItem from "../molecules/UserItem";
 
 import { User } from "~/types/users";
 
-interface PersonListProps {
+interface UserListProps {
   users: User[];
+  onUserPress: (user: User) => void;
 }
 
-export default function PersonList(props: PersonListProps) {
-  const { users } = props;
+export default function UserList(props: UserListProps) {
+  const { users, onUserPress } = props;
 
   return (
     <View style={styles.root}>
       {users.map((user) => (
-        <PersonItem key={user.id} user={user} />
+        <UserItem key={user.id} user={user} onPress={onUserPress} />
       ))}
     </View>
   );

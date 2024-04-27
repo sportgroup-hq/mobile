@@ -1,9 +1,10 @@
-import { View } from "react-native";
+import { View, Keyboard } from "react-native";
 import {
   TextInputProps,
   HelperTextProps,
   TextInput,
   HelperText,
+  TouchableRipple,
 } from "react-native-paper";
 
 import BottomSheetModalSelect from "./BottomSheetModalSelect";
@@ -36,16 +37,21 @@ export default function SelectField(props: TextFieldProps) {
   return (
     <>
       <View>
-        <TextInput
-          label={label}
-          value={optionLabel}
-          onPressIn={handleBSMSelectPresent}
-          error={error}
-          editable={false}
-          right={
-            <TextInput.Icon icon="menu-down" onPress={handleBSMSelectPresent} />
-          }
-        />
+        <TouchableRipple onPress={handlePress}>
+          <TextInput
+            label={label}
+            value={optionLabel}
+            error={error}
+            editable={false}
+            pointerEvents="none"
+            right={
+              <TextInput.Icon
+                icon="menu-down"
+                onPress={handleBSMSelectPresent}
+              />
+            }
+          />
+        </TouchableRipple>
         {!!helperText && (
           <HelperText type={helperTextType}>{helperText}</HelperText>
         )}
@@ -57,6 +63,12 @@ export default function SelectField(props: TextFieldProps) {
       />
     </>
   );
+
+  function handlePress() {
+    Keyboard.dismiss();
+
+    handleBSMSelectPresent();
+  }
 
   function handleChange(value: string) {
     handleBSMSelectDismiss();

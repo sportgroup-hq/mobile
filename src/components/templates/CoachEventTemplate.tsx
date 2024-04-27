@@ -2,11 +2,11 @@ import { useState } from "react";
 import { TabView, SceneMap } from "react-native-tab-view";
 
 import EventInfoTab from "../organisms/EventInfoTab";
-import EventRecordsTab from "../organisms/EventRecordsTab";
+import EventParticipantsTab from "../organisms/EventParticipantsTab";
 
 const renderScene = SceneMap({
   info: EventInfoTab,
-  records: EventRecordsTab,
+  records: EventParticipantsTab,
 });
 
 export default function CoachEventTemplate() {

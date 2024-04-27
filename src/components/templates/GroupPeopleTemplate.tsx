@@ -1,8 +1,11 @@
+import { useRouter } from "expo-router";
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ActivityIndicator, Text } from "react-native-paper";
 
-import PersonList from "../organisms/PersonList";
+import UserList from "../organisms/UserList";
 
+import { ROUTES } from "~/constants/routes";
+import { generatePath } from "~/helpers/misc";
 import { User } from "~/types/users";
 
 interface GroupPeopleTemplateProps {
@@ -13,6 +16,8 @@ interface GroupPeopleTemplateProps {
 
 export function GroupPeopleTemplate(props: GroupPeopleTemplateProps) {
   const { coaches, athletes, isLoading } = props;
+
+  const router = useRouter();
 
   return (
     <View style={styles.root}>
@@ -37,7 +42,7 @@ export function GroupPeopleTemplate(props: GroupPeopleTemplateProps) {
               <Text variant="bodySmall">У цій групі ще немає тренерів</Text>
             </View>
           ) : (
-            <PersonList users={coaches} />
+            <UserList users={coaches} onUserPress={handleUserPress} />
           )}
         </View>
         <View style={styles.section}>
@@ -49,11 +54,15 @@ export function GroupPeopleTemplate(props: GroupPeopleTemplateProps) {
               <Text variant="bodySmall">У цій групі ще немає спортсменів</Text>
             </View>
           ) : (
-            <PersonList users={athletes} />
+            <UserList users={athletes} onUserPress={handleUserPress} />
           )}
         </View>
       </View>
     );
+
+    function handleUserPress(user: User) {
+      router.navigate(generatePath(ROUTES.PROFILE.VIEW, { id: user.id }));
+    }
   }
 }
 

@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 
-import { Event } from "~/types/events";
+import { BaseEvent } from "~/types/events";
 
-export function getDateRange(event: Event) {
+export function getDateRange(event: BaseEvent) {
   const now = dayjs();
   const start = dayjs(event.startDate);
   const end = dayjs(event.endDate);
@@ -42,7 +42,7 @@ export function getDateRange(event: Event) {
   return `${start.format("D MMM. YYYY р.")} - ${end.format("D MMM. YYYY р.")}`;
 }
 
-export function getDateRangeWithTime(event: Event) {
+export function getDateRangeWithTime(event: BaseEvent) {
   const now = dayjs();
   const start = dayjs(event.startDate);
   const end = dayjs(event.endDate);

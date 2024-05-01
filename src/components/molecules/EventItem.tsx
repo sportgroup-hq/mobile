@@ -12,7 +12,7 @@ import { generatePath } from "~/helpers/misc";
 import useBottomSheetModal from "~/hooks/useBottomSheetModal";
 import useDialog from "~/hooks/useDialog";
 import useIsOwner from "~/hooks/useIsOwner";
-import { Event } from "~/types/events";
+import { GroupEvent } from "~/types/events";
 
 const ACTION_OPTIONS = [
   { label: "Редагувати подію", value: "edit" },
@@ -20,7 +20,7 @@ const ACTION_OPTIONS = [
 ];
 
 interface EventItemProps {
-  event: Event;
+  event: GroupEvent;
 }
 
 export default function EventItem(props: EventItemProps) {

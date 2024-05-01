@@ -1,9 +1,8 @@
 import { User } from "./users";
 
-export interface Event {
+export interface BaseEvent {
   id: string;
   name: string;
-  participants: User[];
   startDate: string;
   endDate: string;
   location?: string;
@@ -11,7 +10,11 @@ export interface Event {
   createdAt: string;
   editedAt: string;
 }
+export interface GroupEvent extends BaseEvent {
+  participants: User[];
+}
 
-export interface PersonEvent extends Omit<Event, "participants"> {
+export interface PersonEvent extends BaseEvent {
+  participant: User;
   records: any;
 }

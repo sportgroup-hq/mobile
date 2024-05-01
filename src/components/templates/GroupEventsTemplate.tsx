@@ -7,13 +7,13 @@ import EventList from "../organisms/EventList";
 
 import { ROUTES } from "~/constants/routes";
 import useBottomSheetModal from "~/hooks/useBottomSheetModal";
-import { Event } from "~/types/events";
+import { GroupEvent } from "~/types/events";
 
 const ACTION_OPTIONS = [
   { label: "Створити подію", value: ROUTES.EVENT.CREATE },
 ];
 interface GroupEventsTemplateProps {
-  eventsData: Event[] | undefined;
+  eventsData: GroupEvent[] | undefined;
   isGetEventsLoading: boolean;
 }
 

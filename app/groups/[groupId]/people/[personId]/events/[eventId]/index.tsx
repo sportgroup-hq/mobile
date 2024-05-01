@@ -9,7 +9,7 @@ export default function PersonEventScreen() {
     personId: string;
     eventId: string;
   }>();
-  const { data: userEventData, isLoading: isGetUserEventLoading } =
+  const { data: personEventData, isLoading: isGetPersonEventLoading } =
     useGetPersonEvent({
       groupId: groupId!,
       personId: personId!,
@@ -18,8 +18,8 @@ export default function PersonEventScreen() {
 
   return (
     <PersonEventTemplate
-      userEventData={userEventData}
-      isGetUserEventLoading={isGetUserEventLoading}
+      personEventData={personEventData}
+      isGetPersonEventLoading={isGetPersonEventLoading}
     />
   );
 }

@@ -5,6 +5,7 @@ import { IconButton, Text, TouchableRipple } from "react-native-paper";
 import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import ConfirmDialog from "./ConfirmDialog";
 
+import { useGetUser } from "~/api/users";
 import { ROUTES } from "~/constants/routes";
 import { getDateRange } from "~/helpers/events";
 import { generatePath } from "~/helpers/misc";
@@ -27,6 +28,7 @@ export default function EventItem(props: EventItemProps) {
 
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { data: userData } = useGetUser();
 
   const isOwner = useIsOwner(id!);
 
@@ -76,9 +78,25 @@ export default function EventItem(props: EventItemProps) {
   );
 
   function handleEventPress() {
+    if (isOwner) {
+      router.navigate(
+        generatePath(ROUTES.EVENT.VIEW, {
+          groupId: id!,
+          eventId: event.id,
+          // eslint-disable-next-line prettier/prettier
+        })
+      );
+      return;
+    }
+
+    if (!userData) {
+      return;
+    }
+
     router.navigate(
-      generatePath(ROUTES.EVENT.VIEW, {
+      generatePath(ROUTES.PERSON.EVENT, {
         groupId: id!,
+        personId: userData.id,
         eventId: event.id,
         // eslint-disable-next-line prettier/prettier
       })

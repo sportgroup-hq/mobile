@@ -9,7 +9,7 @@ const renderScene = SceneMap({
   records: EventParticipantsTab,
 });
 
-export default function CoachEventTemplate() {
+export default function GroupEventTemplate() {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: "info", title: "Інформація" },

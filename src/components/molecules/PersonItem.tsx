@@ -4,19 +4,19 @@ import { TouchableRipple, Text, Avatar } from "react-native-paper";
 import { getFullName } from "~/helpers/users";
 import { User } from "~/types/users";
 
-interface UserItemProps {
-  user: User;
-  onPress: (user: User) => void;
+interface PersonItemProps {
+  person: User;
+  onPress: (person: User) => void;
 }
 
-export default function UserItem(props: UserItemProps) {
-  const { user, onPress } = props;
+export default function PersonItem(props: PersonItemProps) {
+  const { person, onPress } = props;
 
   return (
-    <TouchableRipple onPress={() => onPress(user)}>
+    <TouchableRipple onPress={() => onPress(person)}>
       <View style={styles.root}>
-        <Avatar.Image source={{ uri: user.avatarUrl }} size={48} />
-        <Text variant="bodyLarge">{getFullName(user)}</Text>
+        <Avatar.Image source={{ uri: person.avatarUrl }} size={48} />
+        <Text variant="bodyLarge">{getFullName(person)}</Text>
       </View>
     </TouchableRipple>
   );

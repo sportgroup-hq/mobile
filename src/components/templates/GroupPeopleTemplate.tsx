@@ -1,8 +1,8 @@
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ActivityIndicator, Text } from "react-native-paper";
 
-import UserList from "../organisms/UserList";
+import PersonList from "../organisms/PersonList";
 
 import { ROUTES } from "~/constants/routes";
 import { generatePath } from "~/helpers/misc";
@@ -18,6 +18,9 @@ export function GroupPeopleTemplate(props: GroupPeopleTemplateProps) {
   const { coaches, athletes, isLoading } = props;
 
   const router = useRouter();
+  const { groupId } = useLocalSearchParams<{
+    groupId: string;
+  }>();
 
   return (
     <View style={styles.root}>
@@ -42,7 +45,7 @@ export function GroupPeopleTemplate(props: GroupPeopleTemplateProps) {
               <Text variant="bodySmall">У цій групі ще немає тренерів</Text>
             </View>
           ) : (
-            <UserList users={coaches} onUserPress={handleUserPress} />
+            <PersonList people={coaches} onPersonPress={handlePersonPress} />
           )}
         </View>
         <View style={styles.section}>
@@ -54,14 +57,20 @@ export function GroupPeopleTemplate(props: GroupPeopleTemplateProps) {
               <Text variant="bodySmall">У цій групі ще немає спортсменів</Text>
             </View>
           ) : (
-            <UserList users={athletes} onUserPress={handleUserPress} />
+            <PersonList people={athletes} onPersonPress={handlePersonPress} />
           )}
         </View>
       </View>
     );
 
-    function handleUserPress(user: User) {
-      router.navigate(generatePath(ROUTES.PROFILE.VIEW, { id: user.id }));
+    function handlePersonPress(person: User) {
+      router.navigate(
+        generatePath(ROUTES.PERSON.PROFILE, {
+          groupId: groupId!,
+          personId: person.id,
+          // eslint-disable-next-line prettier/prettier
+        })
+      );
     }
   }
 }

@@ -11,3 +11,7 @@ export interface Event {
   createdAt: string;
   editedAt: string;
 }
+
+export interface PersonEvent extends Omit<Event, "participants"> {
+  records: any;
+}

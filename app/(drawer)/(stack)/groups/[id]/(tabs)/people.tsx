@@ -14,11 +14,9 @@ export default function GroupPeopleScreen() {
   }
 
   const coaches = peopleData.filter(
-    // eslint-disable-next-line prettier/prettier
     (person) => person.id === groupData.owner.id
   );
   const athletes = peopleData.filter(
-    // eslint-disable-next-line prettier/prettier
     (person) => person.id !== groupData.owner.id
   );
 

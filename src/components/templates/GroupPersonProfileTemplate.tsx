@@ -10,7 +10,6 @@ interface GroupPersonProfileTemplateProps {
 }
 
 export default function GroupPersonProfileTemplate(
-  // eslint-disable-next-line prettier/prettier
   props: GroupPersonProfileTemplateProps
 ) {
   const { personData, isGetPersonLoading } = props;

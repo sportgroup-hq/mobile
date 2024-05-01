@@ -83,7 +83,6 @@ export default function EventItem(props: EventItemProps) {
         generatePath(ROUTES.EVENT.VIEW, {
           groupId: id!,
           eventId: event.id,
-          // eslint-disable-next-line prettier/prettier
         })
       );
       return;
@@ -98,7 +97,6 @@ export default function EventItem(props: EventItemProps) {
         groupId: id!,
         personId: userData.id,
         eventId: event.id,
-        // eslint-disable-next-line prettier/prettier
       })
     );
   }
@@ -113,7 +111,6 @@ export default function EventItem(props: EventItemProps) {
         generatePath(ROUTES.EVENT.EDIT, {
           groupId: id!,
           eventId: event.id,
-          // eslint-disable-next-line prettier/prettier
         })
       );
       return;

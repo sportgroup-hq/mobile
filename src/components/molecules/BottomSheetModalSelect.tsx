@@ -17,7 +17,6 @@ interface BottomSheetModalSelectProps {
 
 const BottomSheetModalSelect = forwardRef(function BottomSheetModalSelect(
   props: BottomSheetModalSelectProps,
-  // eslint-disable-next-line prettier/prettier
   ref: React.Ref<BottomSheetModal>
 ) {
   const { options, onChange } = props;

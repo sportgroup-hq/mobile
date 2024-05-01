@@ -64,11 +64,9 @@ export function useGetGroups() {
       }
 
       const createdGroups = data.filter(
-        // eslint-disable-next-line prettier/prettier
         (group) => userData.id === group.owner.id
       );
       const joinedGroups = data.filter(
-        // eslint-disable-next-line prettier/prettier
         (group) => userData.id !== group.owner.id
       );
 

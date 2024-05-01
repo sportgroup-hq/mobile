@@ -44,7 +44,6 @@ export default function EventParticipantsTab() {
         groupId: groupId!,
         personId: person.id,
         eventId: eventId!,
-        // eslint-disable-next-line prettier/prettier
       })
     );
   }

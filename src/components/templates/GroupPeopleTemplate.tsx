@@ -68,7 +68,6 @@ export function GroupPeopleTemplate(props: GroupPeopleTemplateProps) {
         generatePath(ROUTES.PERSON.PROFILE, {
           groupId: groupId!,
           personId: person.id,
-          // eslint-disable-next-line prettier/prettier
         })
       );
     }

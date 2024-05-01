@@ -19,7 +19,6 @@ async function getEvent({
   eventId: string;
 }): Promise<Event> {
   const res = await mockedApiClient.get(
-    // eslint-disable-next-line prettier/prettier
     generatePath(EVENT_URL, { groupId, eventId })
   );
   return res.data;

@@ -6,7 +6,6 @@ import GroupPersonProfileTemplate from "~/components/templates/GroupPersonProfil
 export default function GroupPersonProfileScreen() {
   const { personId } = useLocalSearchParams<{ personId: string }>();
   const { data: personData, isLoading: isGetPersonLoading } = useGetPerson(
-    // eslint-disable-next-line prettier/prettier
     personId!
   );
 

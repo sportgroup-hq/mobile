@@ -15,7 +15,6 @@ import { User } from "~/types/users";
 
 async function getPeople(groupId: string): Promise<User[]> {
   const res = await mockedApiClient.get(
-    // eslint-disable-next-line prettier/prettier
     generatePath(PEOPLE_URL, { id: groupId })
   );
   return res.data;
@@ -23,7 +22,6 @@ async function getPeople(groupId: string): Promise<User[]> {
 
 async function getPerson(personId: string): Promise<User> {
   const res = await mockedApiClient.get(
-    // eslint-disable-next-line prettier/prettier
     generatePath(PERSON_URL, { id: personId })
   );
   return res.data;
@@ -39,7 +37,6 @@ async function getPersonEvent({
   eventId: string;
 }): Promise<PersonEvent> {
   const res = await mockedApiClient.get(
-    // eslint-disable-next-line prettier/prettier
     generatePath(PERSON_EVENT_URL, { groupId, personId, eventId })
   );
   return res.data;

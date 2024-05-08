@@ -2,6 +2,7 @@ import { ScrollView, View, StyleSheet } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 
 import PersonEventInfo from "../organisms/PersonEventInfo";
+import PersonEventRecords from "../organisms/PersonEventRecords";
 
 import { PersonEvent } from "~/types/events";
 
@@ -20,7 +21,11 @@ export default function PersonEventTemplate(props: PersonEventTemplateProps) {
           {isGetPersonEventLoading || !personEventData ? (
             <ActivityIndicator />
           ) : (
-            <PersonEventInfo event={personEventData} />
+            <View style={styles.body}>
+              <PersonEventInfo event={personEventData} />
+
+              <PersonEventRecords records={personEventData.records} />
+            </View>
           )}
         </View>
       </ScrollView>
@@ -38,5 +43,8 @@ const styles = StyleSheet.create({
   main: {
     paddingVertical: 16,
     paddingHorizontal: 8,
+  },
+  body: {
+    gap: 16,
   },
 });

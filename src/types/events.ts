@@ -1,3 +1,4 @@
+import { PersonRecord } from "./records";
 import { User } from "./users";
 
 export interface BaseEvent {
@@ -16,5 +17,5 @@ export interface GroupEvent extends BaseEvent {
 
 export interface PersonEvent extends BaseEvent {
   participant: User;
-  records: any;
+  records: PersonRecord[];
 }

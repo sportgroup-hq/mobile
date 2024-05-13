@@ -4,9 +4,9 @@ import mockedApiClient from "./mockedApiClient";
 
 import { EVENTS_KEY, EVENTS_URL, EVENT_URL } from "~/constants/events";
 import { generatePath } from "~/helpers/misc";
-import { Event } from "~/types/events";
+import { GroupEvent } from "~/types/events";
 
-async function getEvents(id: string): Promise<Event[]> {
+async function getEvents(id: string): Promise<GroupEvent[]> {
   const res = await mockedApiClient.get(generatePath(EVENTS_URL, { id }));
   return res.data;
 }
@@ -17,9 +17,8 @@ async function getEvent({
 }: {
   groupId: string;
   eventId: string;
-}): Promise<Event> {
+}): Promise<GroupEvent> {
   const res = await mockedApiClient.get(
-    // eslint-disable-next-line prettier/prettier
     generatePath(EVENT_URL, { groupId, eventId })
   );
   return res.data;

@@ -15,8 +15,11 @@ export const ROUTES = {
     CREATE: "/groups/:groupId/events/create",
     EDIT: "/groups/:groupId/events/:eventId/edit",
   },
-  PROFILE: {
-    VIEW: "/profile/:id",
-    ME: "/profile/me",
+  PERSON: {
+    PROFILE: "/groups/:groupId/people/:personId",
+    EVENT: "/groups/:groupId/people/:personId/events/:eventId",
+  },
+  USER: {
+    PROFILE: "/profile/me",
   },
 };

@@ -60,11 +60,18 @@ function RootStack() {
       />
 
       <Stack.Screen
-        name="profile/[id]"
+        name="groups/[groupId]/people/[personId]/index"
         options={{
           headerTitle: "",
         }}
       />
+      <Stack.Screen
+        name="groups/[groupId]/people/[personId]/events/[eventId]/index"
+        options={{
+          headerTitle: "",
+        }}
+      />
+
       <Stack.Screen
         name="profile/me"
         options={{

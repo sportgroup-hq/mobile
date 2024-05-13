@@ -2,7 +2,7 @@ import Toast from "react-native-toast-message";
 import { useQueryClient, useQuery, useMutation } from "react-query";
 
 import mockedApiClient from "./mockedApiClient";
-import { useGetMe } from "./users";
+import { useGetUser } from "./users";
 
 import {
   GROUPS_KEY,
@@ -50,7 +50,7 @@ async function deleteGroup(id: string) {
 }
 
 export function useGetGroups() {
-  const { data: userData, isLoading: isGetUserLoading } = useGetMe();
+  const { data: userData, isLoading: isGetUserLoading } = useGetUser();
 
   return useQuery({
     queryKey: [GROUPS_KEY],
@@ -64,11 +64,9 @@ export function useGetGroups() {
       }
 
       const createdGroups = data.filter(
-        // eslint-disable-next-line prettier/prettier
         (group) => userData.id === group.owner.id
       );
       const joinedGroups = data.filter(
-        // eslint-disable-next-line prettier/prettier
         (group) => userData.id !== group.owner.id
       );
 

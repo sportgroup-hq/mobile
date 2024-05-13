@@ -2,10 +2,10 @@ import { FlatList, StyleSheet, View } from "react-native";
 
 import EventItem from "../molecules/EventItem";
 
-import { Event } from "~/types/events";
+import { GroupEvent } from "~/types/events";
 
 interface EventListProps {
-  events: Event[];
+  events: GroupEvent[];
 }
 
 export default function EventList(props: EventListProps) {

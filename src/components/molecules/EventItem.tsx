@@ -5,13 +5,14 @@ import { IconButton, Text, TouchableRipple } from "react-native-paper";
 import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import ConfirmDialog from "./ConfirmDialog";
 
+import { useGetUser } from "~/api/users";
 import { ROUTES } from "~/constants/routes";
 import { getDateRange } from "~/helpers/events";
 import { generatePath } from "~/helpers/misc";
 import useBottomSheetModal from "~/hooks/useBottomSheetModal";
 import useDialog from "~/hooks/useDialog";
 import useIsOwner from "~/hooks/useIsOwner";
-import { Event } from "~/types/events";
+import { GroupEvent } from "~/types/events";
 
 const ACTION_OPTIONS = [
   { label: "Редагувати подію", value: "edit" },
@@ -19,7 +20,7 @@ const ACTION_OPTIONS = [
 ];
 
 interface EventItemProps {
-  event: Event;
+  event: GroupEvent;
 }
 
 export default function EventItem(props: EventItemProps) {
@@ -27,6 +28,7 @@ export default function EventItem(props: EventItemProps) {
 
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { data: userData } = useGetUser();
 
   const isOwner = useIsOwner(id!);
 
@@ -76,11 +78,25 @@ export default function EventItem(props: EventItemProps) {
   );
 
   function handleEventPress() {
+    if (isOwner) {
+      router.navigate(
+        generatePath(ROUTES.EVENT.VIEW, {
+          groupId: id!,
+          eventId: event.id,
+        })
+      );
+      return;
+    }
+
+    if (!userData) {
+      return;
+    }
+
     router.navigate(
-      generatePath(ROUTES.EVENT.VIEW, {
+      generatePath(ROUTES.PERSON.EVENT, {
         groupId: id!,
+        personId: userData.id,
         eventId: event.id,
-        // eslint-disable-next-line prettier/prettier
       })
     );
   }
@@ -95,7 +111,6 @@ export default function EventItem(props: EventItemProps) {
         generatePath(ROUTES.EVENT.EDIT, {
           groupId: id!,
           eventId: event.id,
-          // eslint-disable-next-line prettier/prettier
         })
       );
       return;

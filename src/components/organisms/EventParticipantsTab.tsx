@@ -1,14 +1,17 @@
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { View, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { ActivityIndicator } from "react-native-paper";
 
-import UserList from "./UserList";
+import PersonList from "./PersonList";
 
 import { useGetEvent } from "~/api/events";
+import { ROUTES } from "~/constants/routes";
+import { generatePath } from "~/helpers/misc";
 import { User } from "~/types/users";
 
 export default function EventParticipantsTab() {
+  const router = useRouter();
   const { groupId, eventId } = useLocalSearchParams<{
     groupId: string;
     eventId: string;
@@ -25,9 +28,9 @@ export default function EventParticipantsTab() {
           {isEventLoading || !eventData ? (
             <ActivityIndicator />
           ) : (
-            <UserList
-              users={eventData.participants}
-              onUserPress={handleUserPress}
+            <PersonList
+              people={eventData.participants}
+              onPersonPress={handlePersonPress}
             />
           )}
         </View>
@@ -35,7 +38,15 @@ export default function EventParticipantsTab() {
     </View>
   );
 
-  function handleUserPress(user: User) {}
+  function handlePersonPress(person: User) {
+    router.navigate(
+      generatePath(ROUTES.PERSON.EVENT, {
+        groupId: groupId!,
+        personId: person.id,
+        eventId: eventId!,
+      })
+    );
+  }
 }
 
 const styles = StyleSheet.create({

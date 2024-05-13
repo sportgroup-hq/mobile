@@ -4,8 +4,10 @@ import { useGetGroup } from "~/api/groups";
 import GroupInfoTemplate from "~/components/templates/GroupInfoTemplate";
 
 export default function GroupInfoScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
-  const { data: groupData, isLoading: isGetGroupLoading } = useGetGroup(id!);
+  const { groupId } = useLocalSearchParams<{ groupId: string }>();
+  const { data: groupData, isLoading: isGetGroupLoading } = useGetGroup(
+    groupId!
+  );
 
   return (
     <GroupInfoTemplate

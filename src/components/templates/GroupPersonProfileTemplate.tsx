@@ -4,49 +4,48 @@ import { ActivityIndicator, Avatar, Text } from "react-native-paper";
 import { getFullName } from "~/helpers/users";
 import { User } from "~/types/users";
 
-interface PersonProfileTemplateProps {
-  userData: User | undefined;
-  isGetUserLoading: boolean;
+interface GroupPersonProfileTemplateProps {
+  personData: User | undefined;
+  isGetPersonLoading: boolean;
 }
 
-export default function PersonProfileTemplate(
-  // eslint-disable-next-line prettier/prettier
-  props: PersonProfileTemplateProps
+export default function GroupPersonProfileTemplate(
+  props: GroupPersonProfileTemplateProps
 ) {
-  const { userData, isGetUserLoading } = props;
+  const { personData, isGetPersonLoading } = props;
 
   return (
     <View style={styles.root}>
       <ScrollView contentContainerStyle={styles.inner}>
         <View style={styles.main}>
-          {isGetUserLoading || !userData ? (
+          {isGetPersonLoading || !personData ? (
             <ActivityIndicator />
           ) : (
             <>
               <View style={styles.header}>
-                <Avatar.Image source={{ uri: userData.avatarUrl }} />
+                <Avatar.Image source={{ uri: personData.avatarUrl }} />
                 <View style={styles.title}>
-                  <Text variant="titleLarge">{getFullName(userData)}</Text>
-                  <Text variant="bodyMedium">{userData.email}</Text>
+                  <Text variant="titleLarge">{getFullName(personData)}</Text>
+                  <Text variant="bodyMedium">{personData.email}</Text>
                 </View>
               </View>
               <View style={styles.body}>
-                {userData.phone && (
+                {personData.phone && (
                   <View style={styles.section}>
                     <Text variant="labelLarge">Телефон</Text>
-                    <Text variant="bodyLarge">{userData.phone}</Text>
+                    <Text variant="bodyLarge">{personData.phone}</Text>
                   </View>
                 )}
-                {userData.dateOfBirth && (
+                {personData.dateOfBirth && (
                   <View style={styles.section}>
                     <Text variant="labelLarge">Дата народження</Text>
-                    <Text variant="bodyLarge">{userData.dateOfBirth}</Text>
+                    <Text variant="bodyLarge">{personData.dateOfBirth}</Text>
                   </View>
                 )}
-                {userData.address && (
+                {personData.address && (
                   <View style={styles.section}>
                     <Text variant="labelLarge">Адреса</Text>
-                    <Text variant="bodyLarge">{userData.address}</Text>
+                    <Text variant="bodyLarge">{personData.address}</Text>
                   </View>
                 )}
               </View>

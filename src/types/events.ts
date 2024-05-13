@@ -1,13 +1,21 @@
+import { PersonRecord } from "./records";
 import { User } from "./users";
 
-export interface Event {
+export interface BaseEvent {
   id: string;
   name: string;
-  participants: User[];
   startDate: string;
   endDate: string;
   location?: string;
   description?: string;
   createdAt: string;
   editedAt: string;
+}
+export interface GroupEvent extends BaseEvent {
+  participants: User[];
+}
+
+export interface PersonEvent extends BaseEvent {
+  participant: User;
+  records: PersonRecord[];
 }

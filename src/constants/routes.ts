@@ -1,6 +1,8 @@
 export const ROUTES = {
-  LOGIN: "/login",
-  REGISTER: "/register",
+  AUTH: {
+    LOGIN: "/login",
+    REGISTER: "/register",
+  },
   HOME: {
     ROOT: "/",
     CREATE: "/create",

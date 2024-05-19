@@ -1,11 +1,6 @@
-import { Redirect, Stack } from "expo-router";
-import { ROUTES } from "~/constants/routes";
+import { Stack } from "expo-router";
 
 export default function ProtectedLayout() {
-  if (true) {
-    return <Redirect href={ROUTES.LOGIN} />;
-  }
-
   return (
     <Stack
       screenOptions={{

@@ -1,31 +1,34 @@
-import { useRouter } from "expo-router";
 import { useFormik } from "formik";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
 
-import TextField from "../molecules/TextField";
+import TextField from "../../molecules/TextField";
 
-import { useCreateGroup } from "~/api/groups";
-import { ROUTES } from "~/constants/routes";
-import { CreateGroupSchema } from "~/helpers/validation";
+import { useEditGroup } from "~/api/groups";
+import { EditGroupSchema } from "~/helpers/validation";
+import { Group } from "~/types/groups";
 
 interface FormValues {
   name: string;
   sport: string;
 }
 
-export default function CreateGroupForm() {
-  const router = useRouter();
+interface EditGroupFormProps {
+  group: Group;
+}
 
-  const { mutateAsync: createGroup, isLoading: isCreatingGroupLoading } =
-    useCreateGroup();
+export default function EditGroupForm(props: EditGroupFormProps) {
+  const { group } = props;
+
+  const { mutateAsync: editGroup, isLoading: isEditGroupLoading } =
+    useEditGroup();
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      sport: "",
+      name: group.name,
+      sport: group.sport || "",
     },
-    validationSchema: CreateGroupSchema,
+    validationSchema: EditGroupSchema,
     onSubmit: handleSubmit,
   });
 
@@ -49,18 +52,17 @@ export default function CreateGroupForm() {
         <Button
           mode="contained"
           onPress={() => formik.handleSubmit()}
-          loading={isCreatingGroupLoading}
-          disabled={isCreatingGroupLoading}
+          loading={isEditGroupLoading}
+          disabled={isEditGroupLoading}
         >
-          Створити
+          Зберегти
         </Button>
       </View>
     </View>
   );
 
-  async function handleSubmit(values: FormValues) {
-    await createGroup(values);
-    router.navigate(ROUTES.HOME.ROOT);
+  function handleSubmit(values: FormValues) {
+    editGroup({ id: group.id, data: values });
   }
 }
 const styles = StyleSheet.create({

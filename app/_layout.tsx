@@ -15,67 +15,24 @@ const queryClient = new QueryClient();
 
 function RootStack() {
   return (
-    <Stack
-      screenOptions={{
-        headerBackTitleVisible: false,
-      }}
-    >
+    <Stack>
       <Stack.Screen
-        name="(drawer)"
+        name="(protected)"
         options={{
           headerShown: false,
         }}
       />
 
       <Stack.Screen
-        name="(home)/create"
+        name="login"
         options={{
-          headerTitle: "Створити групу",
+          headerTitle: "Увійти",
         }}
       />
       <Stack.Screen
-        name="(home)/join"
+        name="register"
         options={{
-          headerTitle: "Приєднатися до групи",
-        }}
-      />
-      <Stack.Screen
-        name="(home)/edit/[id]"
-        options={{
-          headerTitle: "Редагувати групу",
-        }}
-      />
-
-      <Stack.Screen
-        name="groups/[groupId]/info"
-        options={{
-          headerTitle: "Інформація",
-        }}
-      />
-      <Stack.Screen
-        name="groups/[groupId]/events/[eventId]/index"
-        options={{
-          headerTitle: "",
-        }}
-      />
-
-      <Stack.Screen
-        name="groups/[groupId]/people/[personId]/index"
-        options={{
-          headerTitle: "",
-        }}
-      />
-      <Stack.Screen
-        name="groups/[groupId]/people/[personId]/events/[eventId]/index"
-        options={{
-          headerTitle: "",
-        }}
-      />
-
-      <Stack.Screen
-        name="profile/me"
-        options={{
-          headerTitle: "Редагувати профіль",
+          headerTitle: "Зареєструватися",
         }}
       />
     </Stack>

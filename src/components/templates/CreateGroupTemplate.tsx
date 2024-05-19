@@ -1,6 +1,6 @@
 import { StyleSheet, View, ScrollView } from "react-native";
 
-import CreateGroupForm from "../organisms/CreateGroupForm";
+import CreateGroupForm from "../organisms/forms/CreateGroupForm";
 
 export default function CreateGroupTemplate() {
   return (

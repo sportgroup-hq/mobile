@@ -5,7 +5,7 @@ import { IconButton, Text, TouchableRipple } from "react-native-paper";
 import BottomSheetModalSelect from "./BottomSheetModalSelect";
 import ConfirmDialog from "./ConfirmDialog";
 
-import { useGetUser } from "~/api/users";
+import { useGetUser } from "~/api/user";
 import { ROUTES } from "~/constants/routes";
 import { getDateRange } from "~/helpers/events";
 import { generatePath } from "~/helpers/misc";

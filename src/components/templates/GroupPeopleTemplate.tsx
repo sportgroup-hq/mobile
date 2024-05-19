@@ -6,7 +6,7 @@ import PersonList from "../organisms/PersonList";
 
 import { ROUTES } from "~/constants/routes";
 import { generatePath } from "~/helpers/misc";
-import { User } from "~/types/users";
+import { User } from "~/types/user";
 
 interface GroupPeopleTemplateProps {
   coaches: User[];

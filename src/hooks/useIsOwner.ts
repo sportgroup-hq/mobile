@@ -1,5 +1,5 @@
 import { useGetGroup } from "~/api/groups";
-import { useGetUser } from "~/api/users";
+import { useGetUser } from "~/api/user";
 
 export default function useIsOwner(id: string) {
   const { data: groupData } = useGetGroup(id);

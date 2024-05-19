@@ -1,9 +1,9 @@
 import { View, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
 
-import { useGetUser } from "~/api/users";
+import { useGetUser } from "~/api/user";
 import { getDateRangeWithTime } from "~/helpers/events";
-import { getFullName } from "~/helpers/users";
+import { getFullName } from "~/helpers/user";
 import { PersonEvent } from "~/types/events";
 
 interface PersonEventInfoProps {

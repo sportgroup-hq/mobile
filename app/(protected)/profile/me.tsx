@@ -1,4 +1,4 @@
-import { useGetUser } from "~/api/users";
+import { useGetUser } from "~/api/user";
 import UserProfileTemplate from "~/components/templates/UserProfileTemplate";
 
 export default function UserProfileScreen() {

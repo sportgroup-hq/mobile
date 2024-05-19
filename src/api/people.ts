@@ -11,7 +11,7 @@ import {
 } from "~/constants/people";
 import { generatePath } from "~/helpers/misc";
 import { PersonEvent } from "~/types/events";
-import { User } from "~/types/users";
+import { User } from "~/types/user";
 
 async function getPeople(groupId: string): Promise<User[]> {
   const res = await mockedApiClient.get(

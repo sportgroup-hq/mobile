@@ -1,7 +1,7 @@
 import { StyleSheet, View, ScrollView } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 
-import EditGroupForm from "../organisms/EditGroupForm";
+import EditGroupForm from "../organisms/forms/EditGroupForm";
 
 import { Group } from "~/types/groups";
 

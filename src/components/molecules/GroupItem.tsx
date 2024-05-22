@@ -8,7 +8,7 @@ import ConfirmDialog from "./ConfirmDialog";
 import { useDeleteGroup, useLeaveGroup } from "~/api/groups";
 import { ROUTES } from "~/constants/routes";
 import { generatePath } from "~/helpers/misc";
-import { getFullName } from "~/helpers/users";
+import { getFullName } from "~/helpers/user";
 import useBottomSheetModal from "~/hooks/useBottomSheetModal";
 import useDialog from "~/hooks/useDialog";
 import useIsOwner from "~/hooks/useIsOwner";

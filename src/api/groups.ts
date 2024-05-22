@@ -2,7 +2,7 @@ import Toast from "react-native-toast-message";
 import { useQueryClient, useQuery, useMutation } from "react-query";
 
 import mockedApiClient from "./mockedApiClient";
-import { useGetUser } from "./users";
+import { useGetUser } from "./user";
 
 import {
   GROUPS_KEY,

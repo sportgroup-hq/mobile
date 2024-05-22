@@ -8,7 +8,7 @@ import PersonList from "./PersonList";
 import { useGetEvent } from "~/api/events";
 import { ROUTES } from "~/constants/routes";
 import { generatePath } from "~/helpers/misc";
-import { User } from "~/types/users";
+import { User } from "~/types/user";
 
 export default function EventParticipantsTab() {
   const router = useRouter();

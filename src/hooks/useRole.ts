@@ -1,5 +1,5 @@
 import { useGetGroup } from "~/api/groups";
-import { useGetUser } from "~/api/users";
+import { useGetUser } from "~/api/user";
 import { Role } from "~/types/records";
 
 export default function useRole(id: string) {

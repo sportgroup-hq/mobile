@@ -2,12 +2,12 @@ import { useFormik } from "formik";
 import { View, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
-import DateField from "../molecules/DateField";
-import SelectField from "../molecules/SelectField";
-import TextField from "../molecules/TextField";
+import DateField from "../../molecules/DateField";
+import SelectField from "../../molecules/SelectField";
+import TextField from "../../molecules/TextField";
 
 import { EditUserSchema } from "~/helpers/validation";
-import { Sex, User } from "~/types/users";
+import { Sex, User } from "~/types/user";
 
 const SEX_OPTIONS = [
   { label: "Чоловік", value: Sex.Male },

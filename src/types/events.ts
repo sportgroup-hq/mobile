@@ -1,5 +1,5 @@
 import { PersonRecord } from "./records";
-import { User } from "./users";
+import { User } from "./user";
 
 export interface BaseEvent {
   id: string;

@@ -1,10 +1,10 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import { ActivityIndicator, Avatar, Text } from "react-native-paper";
 
-import EditUserForm from "../organisms/EditUserForm";
+import EditUserForm from "../organisms/forms/EditUserForm";
 
-import { getFullName } from "~/helpers/users";
-import { User } from "~/types/users";
+import { getFullName } from "~/helpers/user";
+import { User } from "~/types/user";
 
 interface UserProfileTemplateProps {
   userData: User | undefined;

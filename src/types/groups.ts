@@ -1,4 +1,4 @@
-import { User } from "./users";
+import { User } from "./user";
 
 export interface Group {
   id: string;

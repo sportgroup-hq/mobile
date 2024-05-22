@@ -1,5 +1,6 @@
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PaperProvider } from "react-native-paper";
@@ -7,9 +8,13 @@ import { en, registerTranslation } from "react-native-paper-dates";
 import Toast from "react-native-toast-message";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import useSessionStore from "~/stores/sessionStore";
+
 import "~/utils/dayjs";
 
 registerTranslation("en", en);
+
+SplashScreen.preventAutoHideAsync();
 
 const queryClient = new QueryClient();
 
@@ -21,61 +26,22 @@ function RootStack() {
       }}
     >
       <Stack.Screen
-        name="(drawer)"
+        name="(protected)"
         options={{
           headerShown: false,
         }}
       />
 
       <Stack.Screen
-        name="(home)/create"
+        name="login"
         options={{
-          headerTitle: "Створити групу",
+          headerTitle: "Увійти",
         }}
       />
       <Stack.Screen
-        name="(home)/join"
+        name="register"
         options={{
-          headerTitle: "Приєднатися до групи",
-        }}
-      />
-      <Stack.Screen
-        name="(home)/edit/[id]"
-        options={{
-          headerTitle: "Редагувати групу",
-        }}
-      />
-
-      <Stack.Screen
-        name="groups/[groupId]/info"
-        options={{
-          headerTitle: "Інформація",
-        }}
-      />
-      <Stack.Screen
-        name="groups/[groupId]/events/[eventId]/index"
-        options={{
-          headerTitle: "",
-        }}
-      />
-
-      <Stack.Screen
-        name="groups/[groupId]/people/[personId]/index"
-        options={{
-          headerTitle: "",
-        }}
-      />
-      <Stack.Screen
-        name="groups/[groupId]/people/[personId]/events/[eventId]/index"
-        options={{
-          headerTitle: "",
-        }}
-      />
-
-      <Stack.Screen
-        name="profile/me"
-        options={{
-          headerTitle: "Редагувати профіль",
+          headerTitle: "Зареєструватися",
         }}
       />
     </Stack>
@@ -83,6 +49,12 @@ function RootStack() {
 }
 
 export default function RootLayout() {
+  const isHydrating = useSessionStore((state) => state.isHydrating);
+
+  if (!isHydrating) {
+    SplashScreen.hideAsync();
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <PaperProvider>

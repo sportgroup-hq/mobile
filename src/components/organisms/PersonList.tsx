@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 
 import PersonItem from "../molecules/PersonItem";
 
-import { User } from "~/types/users";
+import { User } from "~/types/user";
 
 interface PersonListProps {
   people: User[];

@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { StyleSheet, View } from "react-native";
 import { Text, Button } from "react-native-paper";
 
-import TextField from "../molecules/TextField";
+import TextField from "../../molecules/TextField";
 
 import { useJoinGroup } from "~/api/groups";
 import { ROUTES } from "~/constants/routes";

@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { TouchableRipple, Avatar } from "react-native-paper";
 
-import { useGetUser } from "~/api/users";
+import { useGetUser } from "~/api/user";
 import { ROUTES } from "~/constants/routes";
 
 export default function UserAvatar() {

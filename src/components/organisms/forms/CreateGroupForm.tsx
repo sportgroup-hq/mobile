@@ -1,34 +1,31 @@
+import { useRouter } from "expo-router";
 import { useFormik } from "formik";
 import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
 
-import TextField from "../molecules/TextField";
+import TextField from "../../molecules/TextField";
 
-import { useEditGroup } from "~/api/groups";
-import { EditGroupSchema } from "~/helpers/validation";
-import { Group } from "~/types/groups";
+import { useCreateGroup } from "~/api/groups";
+import { ROUTES } from "~/constants/routes";
+import { CreateGroupSchema } from "~/helpers/validation";
 
 interface FormValues {
   name: string;
   sport: string;
 }
 
-interface EditGroupFormProps {
-  group: Group;
-}
+export default function CreateGroupForm() {
+  const router = useRouter();
 
-export default function EditGroupForm(props: EditGroupFormProps) {
-  const { group } = props;
-
-  const { mutateAsync: editGroup, isLoading: isEditGroupLoading } =
-    useEditGroup();
+  const { mutateAsync: createGroup, isLoading: isCreatingGroupLoading } =
+    useCreateGroup();
 
   const formik = useFormik({
     initialValues: {
-      name: group.name,
-      sport: group.sport || "",
+      name: "",
+      sport: "",
     },
-    validationSchema: EditGroupSchema,
+    validationSchema: CreateGroupSchema,
     onSubmit: handleSubmit,
   });
 
@@ -52,17 +49,18 @@ export default function EditGroupForm(props: EditGroupFormProps) {
         <Button
           mode="contained"
           onPress={() => formik.handleSubmit()}
-          loading={isEditGroupLoading}
-          disabled={isEditGroupLoading}
+          loading={isCreatingGroupLoading}
+          disabled={isCreatingGroupLoading}
         >
-          Зберегти
+          Створити
         </Button>
       </View>
     </View>
   );
 
-  function handleSubmit(values: FormValues) {
-    editGroup({ id: group.id, data: values });
+  async function handleSubmit(values: FormValues) {
+    await createGroup(values);
+    router.navigate(ROUTES.HOME.ROOT);
   }
 }
 const styles = StyleSheet.create({

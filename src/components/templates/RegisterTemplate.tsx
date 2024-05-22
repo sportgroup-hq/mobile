@@ -1,20 +1,20 @@
-import { StyleSheet, View, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 
-import JoinGroupForm from "../organisms/forms/JoinGroupForm";
+import RegisterForm from "../organisms/forms/RegisterForm";
 
-export default function JoinGroupTemplate() {
+export default function RegisterTemplate() {
   return (
     <View style={styles.root}>
       <ScrollView contentContainerStyle={styles.inner}>
         <View style={styles.main}>
-          <JoinGroupForm />
+          <RegisterForm />
         </View>
       </ScrollView>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   root: {
     flex: 1,
   },

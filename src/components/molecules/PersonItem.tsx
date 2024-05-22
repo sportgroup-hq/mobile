@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import { TouchableRipple, Text, Avatar } from "react-native-paper";
 
-import { getFullName } from "~/helpers/users";
-import { User } from "~/types/users";
+import { getFullName } from "~/helpers/user";
+import { User } from "~/types/user";
 
 interface PersonItemProps {
   person: User;

@@ -1,13 +1,20 @@
-export interface RegisterData {
+export interface RegisterRequest {
   first_name: string;
   last_name: string;
   email: string;
   password: string;
 }
 
-export interface LoginData {
+export interface LoginRequest {
   email: string;
   password: string;
+}
+
+export interface AuthResponse {
+  access_token: string;
+  token_type: string;
+  expires_in: 0;
+  refresh_token: string;
 }
 
 export enum Sex {

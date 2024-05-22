@@ -9,11 +9,14 @@ import { Drawer as PaperDrawer } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ROUTES } from "~/constants/routes";
+import useSessionStore from "~/stores/sessionStore";
 
 function DrawerContent(props: DrawerContentComponentProps) {
   const router = useRouter();
   const pathname = usePathname();
   const insets = useSafeAreaInsets();
+
+  const setToken = useSessionStore((state) => state.setToken);
 
   return (
     <>
@@ -29,13 +32,21 @@ function DrawerContent(props: DrawerContentComponentProps) {
       </DrawerContentScrollView>
 
       <View style={{ paddingBottom: insets.bottom }}>
-        <PaperDrawer.Item icon="logout" label="Вийти" onPress={() => {}} />
+        <PaperDrawer.Item
+          icon="logout"
+          label="Вийти"
+          onPress={handleLogoutPress}
+        />
       </View>
     </>
   );
 
   function handleHomePress() {
     router.navigate(ROUTES.HOME.ROOT);
+  }
+
+  function handleLogoutPress() {
+    setToken(null);
   }
 }
 

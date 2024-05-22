@@ -1,10 +1,11 @@
-import { useRouter } from "expo-router";
+import { useRouter, Link } from "expo-router";
 import { useFormik } from "formik";
 import { StyleSheet, View } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 
 import TextField from "../../molecules/TextField";
 
+import Logo from "~/assets/images/Logo";
 import { ROUTES } from "~/constants/routes";
 import { LoginSchema } from "~/helpers/validation";
 import { useLogin } from "~/api/user";
@@ -30,21 +31,26 @@ export default function LoginForm() {
 
   return (
     <View style={styles.root}>
-      <TextField
-        label="Пошта"
-        value={formik.values.email}
-        onChangeText={formik.handleChange("email")}
-        error={formik.touched.email && !!formik.errors.email}
-        helperText={formik.touched.email && formik.errors.email}
-      />
-      <TextField
-        label="Пароль"
-        value={formik.values.password}
-        onChangeText={formik.handleChange("password")}
-        error={formik.touched.password && !!formik.errors.password}
-        helperText={formik.touched.password && formik.errors.password}
-        secureTextEntry
-      />
+      <View style={styles.logo}>
+        <Logo width={96} height={96} />
+      </View>
+      <View style={styles.body}>
+        <TextField
+          label="Пошта"
+          value={formik.values.email}
+          onChangeText={formik.handleChange("email")}
+          error={formik.touched.email && !!formik.errors.email}
+          helperText={formik.touched.email && formik.errors.email}
+        />
+        <TextField
+          label="Пароль"
+          value={formik.values.password}
+          onChangeText={formik.handleChange("password")}
+          error={formik.touched.password && !!formik.errors.password}
+          helperText={formik.touched.password && formik.errors.password}
+          secureTextEntry
+        />
+      </View>
       <Button
         mode="contained"
         onPress={() => formik.handleSubmit()}
@@ -53,16 +59,31 @@ export default function LoginForm() {
       >
         Увійти
       </Button>
+      <View style={styles.footer}>
+        <Link href={ROUTES.AUTH.REGISTER} asChild>
+          <Text variant="bodyMedium">Створити новий акаунт</Text>
+        </Link>
+      </View>
     </View>
   );
 
   async function handleSubmit(values: FormValues) {
     await login(values);
-    router.navigate(ROUTES.HOME.ROOT);
+    router.replace(ROUTES.HOME.ROOT);
   }
 }
 const styles = StyleSheet.create({
   root: {
+    gap: 24,
+  },
+  logo: {
+    alignSelf: "center",
+  },
+  body: {
     gap: 16,
+  },
+  footer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
 });

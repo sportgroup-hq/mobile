@@ -1,6 +1,14 @@
-import { Stack } from "expo-router";
+import { Redirect, Stack } from "expo-router";
+import { ROUTES } from "~/constants/routes";
+import useIsAuthenticated from "~/hooks/useIsAuthenticated";
 
 export default function ProtectedLayout() {
+  const isAuthenticated = useIsAuthenticated();
+
+  if (!isAuthenticated) {
+    return <Redirect href={ROUTES.AUTH.LOGIN} />;
+  }
+
   return (
     <Stack
       screenOptions={{

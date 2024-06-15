@@ -1,5 +1,5 @@
-import { View } from "react-native";
+import { GroupAnalysisTemplate } from "~/components/templates/GroupAnalysisTemplate";
 
 export default function GroupAnalysisScreen() {
-  return <View />;
+  return <GroupAnalysisTemplate />;
 }

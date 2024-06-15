@@ -14,7 +14,7 @@
     "@react-navigation/drawer": "^6.6.15",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
-    "expo": "^50.0.17",
+    "expo": "~50.0.19",
     "expo-clipboard": "~5.0.1",
     "expo-constants": "~15.4.6",
     "expo-linking": "~6.2.2",

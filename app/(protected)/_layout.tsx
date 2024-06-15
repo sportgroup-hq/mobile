@@ -1,18 +1,24 @@
 import { Redirect, Stack } from "expo-router";
+import { useTheme } from "react-native-paper";
 import { ROUTES } from "~/constants/routes";
 import useIsAuthenticated from "~/hooks/useIsAuthenticated";
 
 export default function ProtectedLayout() {
+  const theme = useTheme();
   const isAuthenticated = useIsAuthenticated();
 
-  if (!isAuthenticated) {
-    return <Redirect href={ROUTES.AUTH.LOGIN} />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Redirect href={ROUTES.AUTH.LOGIN} />;
+  // }
 
   return (
     <Stack
       screenOptions={{
         headerBackTitleVisible: false,
+        headerTintColor: theme.colors.onSurfaceVariant,
+        headerTitleStyle: {
+          color: theme.colors.onSurface,
+        },
       }}
     >
       <Stack.Screen

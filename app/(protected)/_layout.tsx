@@ -5,9 +5,9 @@ import useIsAuthenticated from "~/hooks/useIsAuthenticated";
 export default function ProtectedLayout() {
   const isAuthenticated = useIsAuthenticated();
 
-  if (!isAuthenticated) {
-    return <Redirect href={ROUTES.AUTH.LOGIN} />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Redirect href={ROUTES.AUTH.LOGIN} />;
+  // }
 
   return (
     <Stack

@@ -1,8 +1,10 @@
 import { Redirect, Stack } from "expo-router";
+import { useTheme } from "react-native-paper";
 import { ROUTES } from "~/constants/routes";
 import useIsAuthenticated from "~/hooks/useIsAuthenticated";
 
 export default function ProtectedLayout() {
+  const theme = useTheme();
   const isAuthenticated = useIsAuthenticated();
 
   // if (!isAuthenticated) {
@@ -13,6 +15,10 @@ export default function ProtectedLayout() {
     <Stack
       screenOptions={{
         headerBackTitleVisible: false,
+        headerTintColor: theme.colors.onSurfaceVariant,
+        headerTitleStyle: {
+          color: theme.colors.onSurface,
+        },
       }}
     >
       <Stack.Screen

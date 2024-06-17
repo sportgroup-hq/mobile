@@ -7,9 +7,9 @@ export default function ProtectedLayout() {
   const theme = useTheme();
   const isAuthenticated = useIsAuthenticated();
 
-  // if (!isAuthenticated) {
-  //   return <Redirect href={ROUTES.AUTH.LOGIN} />;
-  // }
+  if (!isAuthenticated) {
+    return <Redirect href={ROUTES.AUTH.LOGIN} />;
+  }
 
   return (
     <Stack

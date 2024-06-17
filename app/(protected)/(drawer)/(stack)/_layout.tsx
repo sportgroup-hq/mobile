@@ -1,10 +1,13 @@
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Stack } from "expo-router";
 import { View, StyleSheet } from "react-native";
+import { useTheme } from "react-native-paper";
 
 import UserAvatar from "~/components/molecules/UserAvatar";
 
 export default function StackLayout() {
+  const theme = useTheme();
+
   return (
     <Stack>
       <Stack.Screen
@@ -12,7 +15,7 @@ export default function StackLayout() {
         options={{
           headerLeft: () => (
             <View style={styles.headerLeft}>
-              <DrawerToggleButton />
+              <DrawerToggleButton tintColor={theme.colors.onSurfaceVariant} />
             </View>
           ),
           headerTitle: "",

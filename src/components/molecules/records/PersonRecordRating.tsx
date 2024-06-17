@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 import { StyleSheet, View } from "react-native";
-import { Text } from "react-native-paper";
+import { Text, useTheme } from "react-native-paper";
 import { AirbnbRating } from "react-native-ratings";
 
 import useRecordPermissions from "~/hooks/useRecordPermissions";
@@ -14,6 +14,8 @@ export default function PersonRecordRating(props: PersonRecordRatingProps) {
   const { record } = props;
   const value = record.value as RatingRecordValue;
 
+  const theme = useTheme();
+
   const { groupId } = useLocalSearchParams<{
     groupId: string;
   }>();
@@ -26,6 +28,9 @@ export default function PersonRecordRating(props: PersonRecordRatingProps) {
         defaultRating={value}
         size={24}
         showRating={false}
+        selectedColor={theme.colors.primary}
+        //@ts-expect-error problem with types in the library
+        unSelectedColor={theme.colors.secondaryContainer}
         isDisabled={!canEdit}
       />
     </View>
@@ -34,6 +39,8 @@ export default function PersonRecordRating(props: PersonRecordRatingProps) {
 
 const styles = StyleSheet.create({
   root: {
-    gap: 4,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });

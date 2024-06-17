@@ -1,6 +1,6 @@
 import { View, StyleSheet } from "react-native";
 
-import PersonRecordWrapper from "../molecules/PersonRecordWrapper";
+import PersonRecordWrapper from "../molecules/records/PersonRecordWrapper";
 
 import { PersonRecord } from "~/types/records";
 
@@ -22,6 +22,6 @@ export default function PersonEventRecords(props: PersonEventRecordsProps) {
 
 const styles = StyleSheet.create({
   root: {
-    gap: 8,
+    gap: 16,
   },
 });

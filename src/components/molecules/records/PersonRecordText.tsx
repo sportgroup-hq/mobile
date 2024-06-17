@@ -1,9 +1,11 @@
 import { useLocalSearchParams } from "expo-router";
 import { StyleSheet, View } from "react-native";
-import { Button, Text, TextInput } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 
 import useRecordPermissions from "~/hooks/useRecordPermissions";
 import { PersonRecord, TextRecordValue } from "~/types/records";
+
+import TextField from "../TextField";
 
 interface PersonRecordTextProps {
   record: PersonRecord;
@@ -21,7 +23,7 @@ export default function PersonRecordText(props: PersonRecordTextProps) {
   return (
     <View style={styles.root}>
       <Text variant="labelLarge">{record.name}</Text>
-      <TextInput value={value} disabled={!canEdit} multiline />
+      <TextField value={value} disabled={!canEdit} multiline />
       <View style={styles.action}>
         <Button icon="content-save" onPress={() => {}}>
           Зберегти

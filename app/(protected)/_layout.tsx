@@ -53,6 +53,13 @@ export default function ProtectedLayout() {
           headerTitle: "Інформація",
         }}
       />
+
+      <Stack.Screen
+        name="groups/[groupId]/events/create"
+        options={{
+          headerTitle: "Створити подію",
+        }}
+      />
       <Stack.Screen
         name="groups/[groupId]/events/[eventId]/index"
         options={{

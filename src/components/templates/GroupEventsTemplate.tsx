@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { ActivityIndicator, Text, Button, FAB } from "react-native-paper";
 
@@ -8,6 +8,8 @@ import EventList from "../organisms/EventList";
 import { ROUTES } from "~/constants/routes";
 import useBottomSheetModal from "~/hooks/useBottomSheetModal";
 import { GroupEvent } from "~/types/events";
+import useIsOwner from "~/hooks/useIsOwner";
+import { generatePath } from "~/helpers/misc";
 
 const ACTION_OPTIONS = [
   { label: "Створити подію", value: ROUTES.EVENT.CREATE },
@@ -21,6 +23,9 @@ export default function GroupEventsTemplate(props: GroupEventsTemplateProps) {
   const { eventsData, isGetEventsLoading } = props;
 
   const router = useRouter();
+  const { id } = useLocalSearchParams<{ id: string }>();
+
+  const isOwner = useIsOwner(id!);
 
   const {
     ref: BSMSelectRef,
@@ -31,7 +36,9 @@ export default function GroupEventsTemplate(props: GroupEventsTemplateProps) {
   return (
     <View style={styles.root}>
       {renderContent()}
-      <FAB icon="plus" style={styles.fab} onPress={handleBSMSelectPresent} />
+      {isOwner && (
+        <FAB icon="plus" style={styles.fab} onPress={handleBSMSelectPresent} />
+      )}
       <BottomSheetModalSelect
         ref={BSMSelectRef}
         options={ACTION_OPTIONS}
@@ -75,7 +82,7 @@ export default function GroupEventsTemplate(props: GroupEventsTemplateProps) {
 
   function handleActionChange(value: string) {
     handleBSMSelectDismiss();
-    router.navigate(value);
+    router.navigate(generatePath(value, { groupId: id! }));
   }
 }
 

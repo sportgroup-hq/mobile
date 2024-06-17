@@ -7,6 +7,9 @@ interface TextFieldProps {
   value?: string;
   onChangeText?: (text: string) => void;
   error?: boolean;
+  disabled?: boolean;
+  multiline?: boolean;
+  keyboardType?: "default" | "numeric";
   secureTextEntry?: boolean;
   helperText?: ReactNode;
 }
@@ -17,6 +20,9 @@ export default function TextField(props: TextFieldProps) {
     value,
     onChangeText,
     error = false,
+    disabled = false,
+    multiline = false,
+    keyboardType = "default",
     secureTextEntry = false,
     helperText,
   } = props;
@@ -31,6 +37,9 @@ export default function TextField(props: TextFieldProps) {
         value={value}
         onChangeText={onChangeText}
         error={error}
+        disabled={disabled}
+        multiline={multiline}
+        keyboardType={keyboardType}
         secureTextEntry={isSecureTextEntry}
         right={
           secureTextEntry && (

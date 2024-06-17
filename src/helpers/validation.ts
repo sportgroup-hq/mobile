@@ -32,7 +32,19 @@ export const JoinGroupSchema = Yup.object().shape({
 
 export const EditUserSchema = Yup.object().shape({
   phone: Yup.string().notRequired(),
-  dateOfBirth: Yup.date().notRequired(),
+  dateOfBirth: Yup.string().notRequired(),
   sex: Yup.string().notRequired(),
   address: Yup.string().notRequired(),
+});
+
+export const CreateEventSchema = Yup.object().shape({
+  title: Yup.string().required("Це поле є обов'язковим."),
+  assignType: Yup.string(),
+  assignedUserIDs: Yup.array(),
+  startAtDate: Yup.string().required("Це поле є обов'язковим."),
+  startAtTime: Yup.string().required("Це поле є обов'язковим."),
+  endAtDate: Yup.string().required("Це поле є обов'язковим."),
+  endAtTime: Yup.string().required("Це поле є обов'язковим."),
+  location: Yup.string().notRequired(),
+  description: Yup.string().notRequired(),
 });
